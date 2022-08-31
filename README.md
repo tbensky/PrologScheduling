@@ -198,6 +198,6 @@ We'll call our top-level goal `plan` and its logic is as follows:
 
 1. Next we check if all classes have been placed using `all_classes_placed`.
 
-1. If so, we list out the room assersions using `listing(room)`, so the user can see the result.
+1. If so, we list out the room assertions using `listing(room)`, so the user can see the result.
 
 
