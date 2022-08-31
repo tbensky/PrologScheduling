@@ -222,7 +222,7 @@ More than once, we've wished Prolog would have some kind of embedded Python with
 
 We, for example, don't really like recursion. We'd much rather iterate through a Prolog list (for example) with a for-loop, and have tons of the usual C/PHP/Python-type string functions available (trim, strupper, etc.) to us when doing so. All to be passed  neatly back into a Prolog datatype so it may continue.
 
-###
+### Back at it
 
 Here's our first needed utility routine, that we would have rather handled procedurally, but by some miracle, we were able to grid out in Prolog: `fits_in_room`, which sees if a proposed day/time pattern called `DaysTimes` fits in room `RoomNum`.  Here's out definition for it:
 
