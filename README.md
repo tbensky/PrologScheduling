@@ -200,4 +200,10 @@ We'll call our top-level goal `plan` and its logic is as follows:
 
 1. If so, we list out the room assertions using `listing(room)`, so the user can see the result.
 
+The `:- dynamic room/3.` is a Prolog directive, telling it as the assertions of `room` (with 3 parameters) into the database is done at runtime (dynamically); `room` does not have any static representations in static data.
+
+### The utility routines
+
+We can't run our code just yet, as some calls are not defined, namely `fits_in_room`, and `all_classes_placed`. So we need to develop these functions before the code will run. A few thoughts on this.
+
 
