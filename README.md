@@ -208,13 +208,13 @@ We can't run our code just yet, as some calls are not defined, namely `fits_in_r
 
 Many times in our study of Prolog, utility routines is where we would usually bail out and abandon our Prolog project. Why? Because usually the utililty routines are 
 
-1. boring
+1. Boring.
 
-1. Easy solved by some procedural language.
+1. Easy solved by a procedural language.
 
 1. More difficult to solve in Prolog.
 
-1. Not impressive, when we finally figure out how to grind them out in Prolog.
+1. Not impressive or sexy, when we finally figure out how to grind them out in Prolog (not AIish, not Prology, nothing special). As a case in point, look at Quicksort implemented in Prolog. All we can say is "why" as in post it here (https://www.reddit.com/r/DiWHY/).
 
 More than once, we've wished Prolog would have some kind of embedded Python within it, that easily took and returned Prolog's native data types for some quick processing. Thus, quick procedural needs can be taken care of quickly.
 
