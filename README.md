@@ -206,15 +206,15 @@ plan :-
 
 We'll call our top-level goal `plan` and its logic is as follows:
 
-1. Get a class from the data using `class(ClassNum,_,TimeSlotGroup)`. `ClassNum` will be the class's number (for easy reference), and `TimeSlotGroup` will its required time slot group. This is all just rote data at this point. All we care about at the moment is the class number and what time slot group it requires. So we ignore the class name right now with the `_`. We could do all of this using a class's name, but for now we'll just stick with its number.
+1. Get a class from the data using `class(ClassNum,_,TimeSlotGroup)`. `ClassNum` will be the class's number (for easy reference), and `TimeSlotGroup` will its required time slot group. This is all just rote data pulling at this point. All we care about at the moment is the class number and what time slot group it requires. So we ignore the class name right now with the `_`. (We could do all of this using a class's name, but for now we'll just stick with its number.)
 
-1. Ok, so given the class requires `TimeSlotGroup`, lets use ` time_slot(TimeSlotGroup,DaysTimes),` to grab some proposed (and specific) days and times (`DaysTimes`) from that time slot group. We don't know which `DaysTimes` Prolog will choose, but we'll leave that up to it (not us).
+1. Ok, so given the class requires `TimeSlotGroup`, lets use ` time_slot(TimeSlotGroup,DaysTimes),` to grab some proposed (and specific) days and times (`DaysTimes`) from within that time slot group. We don't know which `DaysTimes` to choose, but feel like this should be part of Prolog's search, so we'll leave that up to Prolog.
 
 1. So we have a class, a proposed day/time pattern and are prepared to place it into a room, whose number is `RoomNum.` Before placing it, let's be sure it doesn't conflict with a class that may already be in the room using `fits_in_room(RoomNum,DaysTimes)`.
 
 1. We use Prolog's built in database `assert()` to keep track of placed classes. But before we assert a class into the database as being "placed," let's be sure we don't do so if it has already been placed using `\+ room(_,ClassNum,_)`. 
 
-1. If it hasn't been placed, we'll go ahead and place it using `assert(room(RoomNum,ClassNum,DaysTimes))`.
+1. If a class hasn't been placed, we'll go ahead and place it using `assert(room(RoomNum,ClassNum,DaysTimes))`.
 
 1. Next we check if all classes have been placed using `all_classes_placed`.
 
@@ -226,21 +226,23 @@ The `:- dynamic room/3.` is a Prolog directive, telling it as the assertions of 
 
 We can't run our code just yet, as some calls are not defined, namely `fits_in_room`, and `all_classes_placed`. So we need to develop these functions before the code will run. A few thoughts on this.
 
-### Thoughts
+### Pure Prolog can be irritating
 
-Many times in our study of Prolog, utility routines is where we would usually bail out and abandon our Prolog project. Why? Because usually the utililty routines are 
+Many times in our study of Prolog, utility routines are needed. These are short routines that help the main search algorithm along, by checking that various conditions are being met. They help to guide the search and ultimately prune the large search space.  
+
+For us, this is precisely where we'd usually bail out and abandon our entire Prolog project. Why? Because usually the utililty routines are 
 
 1. Boring.
 
 1. Easy solved by a procedural language.
 
-1. More difficult to solve in Prolog.
+1. More difficult to solve in Prolog than in a procedural language.
 
-1. Not impressive or sexy, when we finally figure out how to grind them out in Prolog (not AIish, not Prology, nothing special). As a case in point, look at Quicksort implemented in Prolog. All we can say is "why" as in post it here (https://www.reddit.com/r/DiWHY/). Yuck.  Funny though, this is how all books on Prolog in the 80s were written. "Let's see if we can implement QuickSort in Prolog." I read all of those books. It was a real turn-off for me.
+1. Not impressive or sexy, when we finally figure out how to grind them out in Prolog (they are not AI-ish, not Prology, nothing special). As a case in point, look at Quicksort implemented in Prolog. All we can say is "why," and when done, just post it here (https://www.reddit.com/r/DiWHY/) and find something else to do. Yuck.  Funny though, this is how all books on Prolog in the 80s and 90s were written.  "Let's see if we can implement QuickSort in Prolog." I read all of those books. It was a real turn-off for me.  This was the time that preceeded to the AI-winter.
 
-More than once, we've wished Prolog would have some kind of embedded Python within it, that easily took and returned Prolog's native data types for some quick processing. Thus, quick procedural needs can be taken care of quickly.
+More than once, we've wished Prolog would have some kind of embedded Python within it, that could easily take and return Prolog's native data types for some quick processing. You know, allow us to implement some small quick task quickly.
 
-We, for example, don't really like recursion. We'd much rather iterate through a Prolog list (for example) with a for-loop, and have tons of the usual C/PHP/Python-type string functions available (trim, strupper, etc.) to us when doing so. All to be passed  neatly back into a Prolog datatype so it may continue its search, which Prolog is really good at.
+We, for example, don't really like recursion. We'd much rather iterate through a Prolog list (for example) with a for-loop, and have tons of the usual C/PHP/Python-type string functions available (trim, strupper, etc.) to us when doing so. All to be passed  neatly back into a Prolog datatype so it may continue its search, which Prolog is what really good at.
 
 ### Back at it
 
