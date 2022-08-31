@@ -206,4 +206,19 @@ The `:- dynamic room/3.` is a Prolog directive, telling it as the assertions of 
 
 We can't run our code just yet, as some calls are not defined, namely `fits_in_room`, and `all_classes_placed`. So we need to develop these functions before the code will run. A few thoughts on this.
 
+Many times in our study of Prolog, utility routines is where we would usually bail out and abandon our Prolog project. Why? Because usually the utililty routines are 
+
+1. boring
+
+1. Easy solved by some procedural language.
+
+1. More difficult to solve in Prolog.
+
+1. Not impressive, when we finally figure out how to grind them out in Prolog.
+
+More than once, we've wished Prolog would have some kind of embedded Python within it, that easily took and returned Prolog's native data types for some quick processing. Thus, quick procedural needs can be taken care of quickly.
+
+We, for example, don't really like recursion. We'd much rather iterate through a Prolog list (for example) with a for-loop, and have tons of the usual C/PHP/Python-type string functions available (trim, strupper, etc.) to us when doing so. All to be passed  neatly back into a Prolog datatype so it may continue.
+
+Here's our first example here, that we would have rather handled procedurally, but by some miracle, we were able to grid out in Prolog: `fits_in_room`, which sees if a proposed day/time pattern called `DaysTimes` fits in room `RoomNum`.
 
