@@ -43,14 +43,15 @@ power of Prolog as I see it is twofold:
 
 1. You don't have to go writing the search algorithms yourself, and 
 
-2. Prolog makes supplying the data very natural and easy.  The pattern
-you need somewhat easy, but not entirely so.  Both are just parts of
-the actual Prolog code.
+2. Prolog makes specifying your data and pattern very natural and maybe
+easier than with a procedural language. Both are just parts of
+the actual Prolog code. I find specifying the data usually doable. The pattern,
+which will drive the search, much less so.
 
 I think people get hung up on the pattern they are looking for, and
 kind of expect Prolog to just "know" such things. In scheduling for
-example, there is no built in magic of Prolog like `make_a_schedule
-(X),` where you hit return and X will be a list of rooms and what
+example, there is no built in magic of Prolog like `make_a_schedule(X),` 
+where you hit return and X will be a list of rooms and what
 classes can be placed into it.  You still have to code up the Prolog
 that ensures classes aren't placed on top of each other, some kind of
 termination condition, and some data structure that even models
