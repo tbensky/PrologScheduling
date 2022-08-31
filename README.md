@@ -66,13 +66,13 @@ it is a difficult problem, and would also be made even more so if
 solved in a procedural language.  Prolog may make the implementation
 easier on you.
 
-# Prolog and Scheduling: getting started
+# Prolog and Scheduling: Getting Started
 
 
 In sum, here's how this scheduling project works.  
 
-I have N classrooms and M classes to be placed within the rooms.  M can vary, and I'd like to
-pack the classes into a mininmal number of rooms. In other words, pack in the classes, minimizing N.  
+I have `N` classrooms and M classes to be placed within the rooms.  The number of classes, `M`, can vary, and I'd like to
+pack the classes into a mininmal number of rooms. In other words, pack in the `M` classes, minimizing `N`.  
 
 The classes are specified (by me), as having a name, number, and
 required time slot. The time slot comes from a list of times that a class is allowed to be scheduled over. For example, one group of
@@ -96,5 +96,51 @@ time_slot(0,[[m,w,f],[20,10,21,00]]).
 ```
 
 This means any class that is needed to be schedule as a "group 0" class will need to be placed on Mon, Wed, or Fri, from 7:10-8am, 8:10-9am, etc. In other
-words, although a "group 0" class  is always 50 min long, it cannot just be placed at just any time, like 10:15am-11:05am.  By the way, this is actual Prolog code. See how easy "the data" can be?
+words, although a "group 0" class  is always 50 min long, it cannot just be placed at just any time, like 10:15am-11:05am. 
 
+Here are some more time slots for the "group 1" Tues/Thurs (t=tues, r=thurs) classes:
+
+
+```
+time_slot(1,[[t,r],[7,40,9,00]]).
+time_slot(1,[[t,r],[8,10,9,30]]).
+time_slot(1,[[t,r],[9,40,11,00]]).
+time_slot(1,[[t,r],[12,10,13,10]]).
+time_slot(1,[[t,r],[13,40,15,00]]).
+time_slot(1,[[t,r],[15,10,16,30]]).
+time_slot(1,[[t,r],[16,10,17,30]]).
+time_slot(1,[[t,r],[16,40,18,00]]).
+time_slot(1,[[t,r],[17,10,18,30]]).
+time_slot(1,[[t,r],[17,40,19,00]]).
+time_slot(1,[[t,r],[18,10,19,30]]).
+time_slot(1,[[t,r],[18,40,20,00]]).
+time_slot(1,[[t,r],[19,10,20,30]]).
+time_slot(1,[[t,r],[19,40,21,00]]).
+time_slot(1,[[t,r],[20,10,21,30]]).
+time_slot(1,[[t,r],[20,40,22,00]]).
+```
+
+Here are a list of how classes are specified.
+
+```prolog
+class(1,[geol-1200-01],1).
+class(2,[geol-1203-01],1).
+class(3,[geol-1203-02],1).
+class(4,[geol-1203-03],1).
+class(5,[geol-1203-04],1).
+class(6,[geol-1206-01],0).
+class(7,[geol-1241-01],1).
+class(8,[geol-1241-02],1).
+class(9,[geol-1270-01],1).
+class(10,[geol-1270-02],1).
+class(11,[geol-1270-03],1).
+class(12,[geol-1301-01],0).
+class(13,[geol-1301-02],0).
+```
+
+So we have a few classes (numbered 1-13), with some name, and needing to be placed at some time that is consistent with a time slot group. Here, `geol-1200-01` needs to be placed on Tues/Thurs
+according to a time in the group 1 time slots.  Class #6, or geol-1206-1 shall be placed as a group 0 class.
+
+ By the way, these blocks are actual Prolog code. See how easy "the data" can be?
+
+ Believe it or not, that's it.  I tell Prolog about valid time slots, and classes. From this alone, I want it to place the M classes (13 here), into N rooms, where N is a minimum.  In practice, this is run for M=200+ classes, simply by extending the `class()` data set.  We also have a few more valid time slot groups.
