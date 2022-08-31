@@ -22,30 +22,33 @@ another one of my "let's learn Prolog phases.")
 
 
 Whenever I'm able to get it to do something that I need, or have
-some "ah ha that how it works" moment with it, I find it very
+some "ah ha that's how that works" moment with it, I find it very
 rewarding, like I've actually just learned something.  Prolog
-however, has an odd reputation out there.
+however, has an odd reputation out there (which is also how I used
+to think about it).
 
 I've read many Stackoverflow questions where someone will say
 something like "I need to automate some scheduling" or "I want to add
 NLP to my application," or "I need to do X," (that is has some AIish
-or 'hard' feel, without an obvious procedural language solution).
+or 'hard' problem, without an obvious procedural language solution).
 They'll then go on to say "I heard Prolog is really good at this,"
 and will post some code like `class(intro_to_coding,T,1:30-3:30).` or
 `is_verb(walk).` and throw their hands in the air with a closing
 thought like "What do I do now? I thought Prolog is supposed to know
 how to handle this."
 
-This is not the case. Prolog, all told is a search language. It's core
+This is not the case. All told, Prolog is a search language. It's core
 contains all of the best practices for searching data you give it,
-for some pattern you are looking for (that you also give it). The
-power of Prolog as I see it is twofold:
+against some pattern you are looking for (that you also give it). It is generalized
+search language, that uses backtracking for search efficiency.  
+
+The power of Prolog as I see it is twofold:
 
 1. You don't have to go writing the search algorithms yourself, and 
 
-2. Prolog makes specifying your data and pattern very natural and maybe
+2. Prolog makes specifying your data and pattern(s) very natural, maybe even
 easier than with a procedural language. Both are just parts of
-the actual Prolog code. I find specifying the data usually doable. The pattern,
+the actual Prolog code. I find specifying the data usually doable (and even enjoyable). The pattern,
 which will drive the search, much less so.
 
 I think people get hung up on the pattern they are looking for, and
@@ -64,3 +67,32 @@ solved in a procedural language.  Prolog may make the implementation
 easier on you.
 
 # Prolog and Scheduling: getting started
+
+
+In sum, here's how this scheduling project works.  
+
+I have N classrooms and M classes to be placed within the rooms.  M can vary, and I'd like to
+pack the classes into a mininmal number of rooms. In other words, pack in the classes, minimizing N.  
+
+The classes are specified (by me), as having a name, number, and
+required time slot. The time slot comes from a list of times that a class is allowed to be scheduled over. For example, one group of
+time slots (group 0, just for labeling sense) might be:
+
+`
+time_slot(0,[[m,w,f],[7,10,8,00]]).
+time_slot(0,[[m,w,f],[8,10,9,00]]).
+time_slot(0,[[m,w,f],[9,10,10,00]]).
+time_slot(0,[[m,w,f],[10,10,11,00]]).
+time_slot(0,[[m,w,f],[11,10,12,00]]).
+time_slot(0,[[m,w,f],[12,10,13,00]]).
+time_slot(0,[[m,w,f],[13,10,14,00]]).
+time_slot(0,[[m,w,f],[14,10,15,00]]).
+time_slot(0,[[m,w,f],[15,10,16,00]]).
+time_slot(0,[[m,w,f],[16,10,17,00]]).
+time_slot(0,[[m,w,f],[17,10,18,00]]).
+time_slot(0,[[m,w,f],[18,10,19,00]]).
+time_slot(0,[[m,w,f],[19,10,20,00]]).
+time_slot(0,[[m,w,f],[20,10,21,00]]).
+`
+
+This means any class that is needed to be schedule as a "group 0" class will need to be placed on Mon, Wed, or Fri, from 7:10-8am, 8:10-9am, etc.
