@@ -202,9 +202,11 @@ We'll call our top-level goal `plan` and its logic is as follows:
 
 The `:- dynamic room/3.` is a Prolog directive, telling it as the assertions of `room` (with 3 parameters) into the database is done at runtime (dynamically); `room` does not have any static representations in static data.
 
-### The utility routines
+## The utility routines
 
 We can't run our code just yet, as some calls are not defined, namely `fits_in_room`, and `all_classes_placed`. So we need to develop these functions before the code will run. A few thoughts on this.
+
+### Thoughts
 
 Many times in our study of Prolog, utility routines is where we would usually bail out and abandon our Prolog project. Why? Because usually the utililty routines are 
 
@@ -220,5 +222,11 @@ More than once, we've wished Prolog would have some kind of embedded Python with
 
 We, for example, don't really like recursion. We'd much rather iterate through a Prolog list (for example) with a for-loop, and have tons of the usual C/PHP/Python-type string functions available (trim, strupper, etc.) to us when doing so. All to be passed  neatly back into a Prolog datatype so it may continue.
 
-Here's our first example here, that we would have rather handled procedurally, but by some miracle, we were able to grid out in Prolog: `fits_in_room`, which sees if a proposed day/time pattern called `DaysTimes` fits in room `RoomNum`.
+###
+
+Here's our first needed utility routine, that we would have rather handled procedurally, but by some miracle, we were able to grid out in Prolog: `fits_in_room`, which sees if a proposed day/time pattern called `DaysTimes` fits in room `RoomNum`.  Here's out definition for it:
+
+`fits_in_room(RoomNum,ProposedDaysTimes) :- findall(X,room(RoomNum,_,X),PlacedSoFar), no_overlap(ProposedDaysTimes,PlacedSoFar).`
+
+It takes in some `RoomNum` and propopsed time pattern `ProposedDaysTimes`.  It generates a list of all classes placed thus far in room `RoomNum` using `findall(X,room(RoomNum,_,X),PlacedSoFar)`, then goes on to see if the proposed day/time pattern overlaps with another class already placed in the room.
 
