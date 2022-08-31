@@ -76,12 +76,13 @@ that ensures classes aren't placed on top of each other, some kind of
 termination condition, some data structure that even models
 a "room full of classes," etc.
 
-As Triska pointed out, if you've wandered over to Prolog, you probably
+As Triska pointed out, if you've wandered over to Prolog, it's probably because you
 have a difficult problem to solve. Likely with a large phase-space to explore.
- You're looking at Prolog because
-it is already difficult problem, and would also be made even more so if
-solved in a procedural language.  Prolog at least makes searching the large
-space plausible, may even make the implementation easier on you. In your procedural
+ You're looking at Prolog because even at the start, you are already stuck on what to do. You maybe don't
+ see an easy route in a procedural language.  
+
+Prolog, at minimum, makes searching the large
+space plausible, and may even make the implementation easier on you. In your procedural
 language, all you can think of is `for i=1,1000000000`, which you already know won't really work.
 
 # Prolog and Scheduling: Getting Started
