@@ -12,7 +12,7 @@ does something useful.
 
 ## First a few thoughts
 
-I find Prolog to be an extremely satisfying language to use. I first
+I find Prolog to be an extremely satisfying language to use and mess around with. I first
 became aware of it with it back in '85 when Borland came out with Turbo Prolog 1
 and then 2. I owned them both. The Borland manuals were great tutorials on
 Prolog (recently bought them all again on eBay). Kudos to the
@@ -34,6 +34,8 @@ some "ah ha that's how that works" moment with it, I find it very
 rewarding. It always feels like I just learned something.  Prolog
 however, has an odd and erroneous reputation though (which is also how I used
 to think about it).
+
+### Perception of Prolog
 
 I've read many Stackoverflow questions where someone will say
 something like "I need to automate some scheduling" or "I want to add
