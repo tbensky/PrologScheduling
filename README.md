@@ -83,7 +83,7 @@ have a difficult problem to solve. Likely with a large phase-space to explore.
 
 Prolog, at minimum, makes searching the large
 space plausible, and may even make the implementation easier on you. In your procedural
-language, all you can think of is `for i=1,1000000000`, which you already know won't really work.
+language, all you can think of is `for(i=0;i<1000000000;i++)`, which you already know won't really work.
 
 # Prolog and Scheduling: Getting Started
 
