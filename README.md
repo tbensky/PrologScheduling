@@ -68,10 +68,9 @@ easier on you.
 
 # Prolog and Scheduling: Getting Started
 
+## What scheduling I need
 
-In sum, here's how this scheduling project works.  
-
-I have `N` classrooms and M classes to be placed within the rooms.  The number of classes, `M`, can vary, and I'd like to
+I have `N` classrooms and `M` classes to be placed within the rooms.  The number of classes, `M`, can vary, and I'd like to
 pack the classes into a mininmal number of rooms. In other words, pack in the `M` classes, minimizing `N`.  
 
 The classes are specified (by me), as having a name, number, and
@@ -95,13 +94,13 @@ time_slot(0,[[m,w,f],[19,10,20,00]]).
 time_slot(0,[[m,w,f],[20,10,21,00]]).
 ```
 
-This means any class that is needed to be schedule as a "group 0" class will need to be placed on Mon, Wed, or Fri, from 7:10-8am, 8:10-9am, etc. In other
-words, although a "group 0" class  is always 50 min long, it cannot just be placed at just any time, like 10:15am-11:05am. 
+This means any class that is needed to be schedule as a `group 0` class will need to be placed on Mon, Wed, or Fri, from 7:10-8am, 8:10-9am, etc. In other
+words, although a `group 0` class  is always 50 min long, it cannot just be placed at just any time, like 10:15am-11:05am. 
 
-Here are some more time slots for the "group 1" Tues/Thurs (t=tues, r=thurs) classes:
+Here are some more time slots for the `group 1` Tues/Thurs (t=tues, r=thurs) classes:
 
 
-```
+```prolog
 time_slot(1,[[t,r],[7,40,9,00]]).
 time_slot(1,[[t,r],[8,10,9,30]]).
 time_slot(1,[[t,r],[9,40,11,00]]).
@@ -139,8 +138,22 @@ class(13,[geol-1301-02],0).
 ```
 
 So we have a few classes (numbered 1-13), with some name, and needing to be placed at some time that is consistent with a time slot group. Here, `geol-1200-01` needs to be placed on Tues/Thurs
-according to a time in the group 1 time slots.  Class #6, or geol-1206-1 shall be placed as a group 0 class.
+according to a time in the group 1 time slots.  Class #6, or `geol-1206-1` shall be placed as a group 0 class.
 
- By the way, these blocks are actual Prolog code. See how easy "the data" can be?
+I feel like just which time to choose within a timeslot should be left up to Prolog, so no more specifics on how to place a class will be given.  Many might think trying a random time within a group of time slots is the way to go.  Maybe it is, maybe it isn't. Let's just let Prolog grapple with this.
 
- Believe it or not, that's it.  I tell Prolog about valid time slots, and classes. From this alone, I want it to place the M classes (13 here), into N rooms, where N is a minimum.  In practice, this is run for M=200+ classes, simply by extending the `class()` data set.  We also have a few more valid time slot groups.
+
+Believe it or not, as complicated as "computer automated scheduling" may sound, that's it for our application.  I tell Prolog about valid time slots, and classes. From this alone, I want it to place the `M` classes (13 here), into `N` rooms, where `N` is a minimum.  In practice, this is run for `M=200+` classes, simply by extending the `class()` data set.  We also have about 6 or 7 time slot groups. 
+
+By the way, these blocks are actual Prolog code. See how easy "the data" can be?
+
+
+ # Thinking it through
+
+ Here's where the Stackoverflow questions on Prolog break down. Given the data above, doesn't Prolog somehow just know what to do? Well no, so let's think it through. Given the data, what would we envision would be a successful scheduling algorithm? Here are some key goals:
+
+ * Get all classes placed into a room.
+
+ * Be sure when placing a class in a room, it doesn't conflict (or overlap) with another class already in it.
+
+ * Only place a class in a room once.
