@@ -1,80 +1,97 @@
-# Scheduling Prolog using Constraint Logic Programming (CLP)
+# Solving scheduling problems using Prolog using Constraint Logic Programming (CLP)
 
 This is a simple, gentle, and step-by-step example of how to use
 Prolog and constraint logic programmig (CLP) to schedule events
 (in this case college classes), into a minimum number of rooms.
 
+## Funny realization
+
+I've been dabbling with Prolog every since high school. That was 30+ years
+ago. This is the first Prolog program I've ever written myself, that actually
+does something useful.
+
 ## First a few thoughts
 
 I find Prolog to be an extremely satisfying language to use. I first
-dabbled with it back in '85 when Borland came out with Turbo Prolog 1
-and then 2. I owned them both.  The manuals were great tutorials on
+became aware of it with it back in '85 when Borland came out with Turbo Prolog 1
+and then 2. I owned them both. The Borland manuals were great tutorials on
 Prolog (recently bought them all again on eBay). Kudos to the
-knowledgable people at Borland who wrote these. I look at Prolog on
+knowledgable people at Borland who wrote them. 
+
+I look at Prolog on
 and off, sometimes with a fair amount of intensity for a few weeks,
 then I set it down again for a while. I've been doing with for the
-better part of 35 years! Ouch! This repo actually contains the very
-first Prolog program I wrote from scratch, to solve a scheduling
-problem I had, and I actually use it! I don't mean this in a
+better part of 30 years! Ouch! This repo actually contains the very
+first Prolog program I wrote from scratch, to solve ongoing scheduling
+work I do. I actually use it, and I don't mean this in a
 historical sense. After all of these years, this is actually the
-first Prolog program I've written just recently (Aug 2022), during
-another one of my "let's learn Prolog phases.")
+first Prolog program I've written (in Aug 2022), during
+another one of my "let's try Prolog" phases.
 
 
-Whenever I'm able to get it to do something that I need, or have
+Whenever I'm able to get Prolog to do something that I need, or have
 some "ah ha that's how that works" moment with it, I find it very
-rewarding, like I've actually just learned something.  Prolog
-however, has an odd reputation out there (which is also how I used
+rewarding. It always feels like I just learned something.  Prolog
+however, has an odd and erroneous reputation though (which is also how I used
 to think about it).
 
 I've read many Stackoverflow questions where someone will say
 something like "I need to automate some scheduling" or "I want to add
-NLP to my application," or "I need to do X," (that is has some AIish
-or 'hard' problem, without an obvious procedural language solution).
-They'll then go on to say "I heard Prolog is really good at this,"
-and will post some code like `class(intro_to_coding,T,1:30-3:30).` or
-`is_verb(walk).` and throw their hands in the air with a closing
+NLP to my application," or "I need to do X," (where X has some AI-ish
+or 'hard' aspects to it, without an obvious procedural language solution).
+
+They'll go on to say "I heard Prolog is really good at this,"
+and will post a few lines of `class(intro_to_coding,T,1:30-3:30)` for a scheduling problem or
+`is_verb(walk)` for an NLP problem. They'll then throw their hands in the air with a comment
 thought like "What do I do now? I thought Prolog is supposed to know
 how to handle this."
 
-This is not the case. All told, Prolog is a search language. It's core
-contains all of the best practices for searching data you give it,
-against some pattern you are looking for (that you also give it). It is generalized
+This is not the case. Prolog (just like your favorite procedural language) may know how to handle such things, but you still have to tell it how.  
+All told, Prolog is a just search language. It's core
+contains all of the best practices for matchibng data (you give it),
+to some pattern you are looking for (that you also give it). It returns
+"true" if it finds a match between the two.  It is generalized
 search language, that uses backtracking for search efficiency.  
 
 The power of Prolog as I see it is twofold:
 
-1. You don't have to go writing the search algorithms yourself, and 
+1. You don't have to go writing the search algorithms yourself. Prolog's are all professional-grade, so you can consider "large" search spaces. 
 
 2. Prolog makes specifying your data and pattern(s) very natural, maybe even
 easier than with a procedural language. Both are just parts of
-the actual Prolog code. I find specifying the data usually doable (and even enjoyable). The pattern,
-which will drive the search, much less so.
+the actual Prolog code. I find specifying the data usually very enjoyable. The pattern,
+which will drive the search, much less so however.
 
-I think people get hung up on the pattern they are looking for, and
-kind of expect Prolog to just "know" such things. In scheduling for
+I think with Prolog, people get hung up on stating the pattern they are looking for in their data. They 
+kind of expect Prolog to just "know" such things. 
+
+In scheduling for
 example, there is no built in magic of Prolog like `make_a_schedule(X),` 
 where you hit return and X will be a list of rooms and what
 classes can be placed into it.  You still have to code up the Prolog
 that ensures classes aren't placed on top of each other, some kind of
-termination condition, and some data structure that even models
-a "room full of classes."
+termination condition, some data structure that even models
+a "room full of classes," etc.
 
 As Triska pointed out, if you've wandered over to Prolog, you probably
-have a difficult problem to solve. You're looking at Prolog because
-it is a difficult problem, and would also be made even more so if
-solved in a procedural language.  Prolog may make the implementation
-easier on you.
+have a difficult problem to solve. Likely with a large phase-space to explore.
+ You're looking at Prolog because
+it is already difficult problem, and would also be made even more so if
+solved in a procedural language.  Prolog at least makes searching the large
+space plausible, may even make the implementation easier on you. In your procedural
+language, all you can think of is `for i=1,1000000000`, which you already know won't really work.
 
 # Prolog and Scheduling: Getting Started
 
 ## What scheduling I need
 
-I have `N` classrooms and `M` classes to be placed within the rooms.  The number of classes, `M`, can vary, and I'd like to
+In the scheduling application here, we need to place college classes into available rooms.  We have `N` classrooms and `M` classes to be placed within the rooms.  The number of classes, `M`, can vary, and we'd like to
 pack the classes into a mininmal number of rooms. In other words, pack in the `M` classes, minimizing `N`.  
 
-The classes are specified (by me), as having a name, number, and
-required time slot. The time slot comes from a list of times that a class is allowed to be scheduled over. For example, one group of
+The classes are specified (by us), as having a name, number, and
+required time slot. 
+
+The time slot comes from a list of times that a class is allowed to be scheduled into. For example, one group of
 time slots (group 0, just for labeling sense) might be:
 
 ```prolog
@@ -94,10 +111,11 @@ time_slot(0,[[m,w,f],[19,10,20,00]]).
 time_slot(0,[[m,w,f],[20,10,21,00]]).
 ```
 
-This means any class that is needed to be schedule as a `group 0` class will need to be placed on Mon, Wed, or Fri, from 7:10-8am, 8:10-9am, etc. In other
-words, although a `group 0` class  is always 50 min long, it cannot just be placed at just any time, like 10:15am-11:05am. 
+These are the classes that meet 3x/week on Mon, Wed, and Fri.  So any class that is needed to be schedule as a `group 0` class will need to be placed on Mon, Wed, or Fri, with any
+of the specified times, 7:10-8am or 8:10-9am or 9:10am-10am, etc. In other
+words, although a `group 0` class  is always 50 min long, but it cannot just be placed at just any time, like 10:15am-11:05am. 
 
-Here are some more time slots for the `group 1` Tues/Thurs (t=tues, r=thurs) classes:
+Here are some more time slots for `group 1` Tues/Thurs (t=tues, r=thurs) classes:
 
 
 ```prolog
@@ -119,7 +137,7 @@ time_slot(1,[[t,r],[20,10,21,30]]).
 time_slot(1,[[t,r],[20,40,22,00]]).
 ```
 
-Here are a list of how classes are specified.
+Here is a list of how classes are specified. These are the classes we need to place in rooms.
 
 ```prolog
 class(1,[geol-1200-01],1).
@@ -137,39 +155,41 @@ class(12,[geol-1301-01],0).
 class(13,[geol-1301-02],0).
 ```
 
-So we have a few classes (numbered 1-13), with some name, and needing to be placed at some time that is consistent with a time slot group. Here, `geol-1200-01` needs to be placed on Tues/Thurs
-according to a time in the group 1 time slots.  Class #6, or `geol-1206-1` shall be placed as a group 0 class.
+So we have a few classes (numbered 1-13), with some name, and needing to be placed at some time that is consistent with a required time slot group. Here, `geol-1200-01` needs to be placed on Tues/Thurs according to a time in the group 1 time slots.  Class #6, or `geol-1206-1` shall be placed as a group 0 class.
 
-I feel like just which time to choose for a class, within a timeslot group, should be left up to Prolog. Thus, no more specifics on how to place a class will be given.  Many might think trying a random time within a group of time slots is the way to go.  Maybe it is, maybe it isn't. Let's just let Prolog grapple with this.
+As a scheduling plan goes, we feel like just which time to choose for a class, within a timeslot group, should be left up to Prolog. Thus, no more specifics on when to place a class will be given.  Many might think trying a random time within a group of time slots is the way to go.  Maybe it is, maybe it isn't. (It's not here, but a random number based algorithm will place classes for you, but it has a funny convergence and completion problem.)  Let's just let Prolog grapple with this parameter.
 
 
-Believe it or not, as complicated as "computer automated scheduling" may sound, that's it for our application.  I tell Prolog about valid time slots, and classes. From this alone, I want it to place the `M` classes (13 here), into `N` rooms, where `N` is a minimum.  In practice, this is run for `M=200+` classes, simply by extending the `class()` data set.  We also have about 6 or 7 time slot groups. 
+Believe it or not, as complicated as "computer automated scheduling" may sound, that's it for our application.  We tell Prolog about valid time slots, and classes needing to be placed. From this alone, we want Prolog to place the `M` classes (13 here), into `N` rooms, where `N` is a minimum.  In practice, this is run for `M=200+` classes, simply by extending the `class()` data set.  We also have about 6 or 7 actual time slot groups. 
 
 By the way, these blocks are actual Prolog code. See how easy "the data" can be?
 
 
  # Thinking it through
 
- Here's where the Stackoverflow questions on Prolog I alluded to above tend to break down: Given the data above, doesn't Prolog somehow just know what to do? No, so let's think it through. 
+ Here's where the Stackoverflow questions on Prolog I alluded to above tend to break down: Given the data above, doesn't Prolog somehow just know what to do? No it does not.  At minimum some "cost" function needs to be specified so any algorithm knows how it's doing (see Lex/Norvig interview).  How would Prolog know your cost function for your hard problem?
+
+ Let's think it through. 
 
  Given the data, what would we envision would be a successful scheduling algorithm? Here are some key goals:
 
- * Get a class to be placed.
+For each class to be placed:
 
  * Get its required time slot group.
 
- * Place the class in some room, and when placing it, be sure it doesn't conflict (or overlap) with another class already in the room.
+ * Place it in some room, and when placing doing so, be sure it doesn't conflict (or overlap) with another class already in the room.
 
- * Only place a class once (i.e. don't place the same class in more than 1 room).
+ * Only place it once.
 
- * Keep doing this until all classes placed into a room.
+ Keep doing this until all classes placed into a room.
 
 
- This is all I can think of for this too. Seems like if all of the above is done, we just might have our rooms scheduled!
+ This is all we can think of for a scheduling algorithm. Seems like if all of the above is done, we just might have our rooms scheduled! A beauty of
+ Prolog now is that these steps more-or-less are the Prolog code. Let's take a look.
 
-## Main goal
+## Prolog code: Main goal
 
-As you know, Prolog has goals you tell it to try and resolve with data.  Let's translate the above steps into Prolog:
+As you know, Prolog has goals you tell it to try and resolve with against your data.  Let's translate the above steps into Prolog:
 
 ```prolog
 :- dynamic room/3.
