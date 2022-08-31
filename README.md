@@ -58,7 +58,7 @@ also give it). It returns
 
 The power of Prolog as we see it is twofold:
 
-1. You don't have to go writing the search algorithms yourself. Prolog's are all professional-grade, so you can consider "large" search spaces. 
+1. You don't have to go writing the search algorithms yourself. Prolog's are all professional-grade, so you can consider tackling "large" search spaces. 
 
 2. Prolog makes specifying your data and pattern(s) very natural, maybe even
 easier than with a procedural language. Both are just parts of
