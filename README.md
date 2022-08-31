@@ -220,7 +220,7 @@ Many times in our study of Prolog, utility routines is where we would usually ba
 
 More than once, we've wished Prolog would have some kind of embedded Python within it, that easily took and returned Prolog's native data types for some quick processing. Thus, quick procedural needs can be taken care of quickly.
 
-We, for example, don't really like recursion. We'd much rather iterate through a Prolog list (for example) with a for-loop, and have tons of the usual C/PHP/Python-type string functions available (trim, strupper, etc.) to us when doing so. All to be passed  neatly back into a Prolog datatype so it may continue.
+We, for example, don't really like recursion. We'd much rather iterate through a Prolog list (for example) with a for-loop, and have tons of the usual C/PHP/Python-type string functions available (trim, strupper, etc.) to us when doing so. All to be passed  neatly back into a Prolog datatype so it may continue its search, which Prolog is really good at.
 
 ### Back at it
 
