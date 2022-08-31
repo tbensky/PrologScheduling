@@ -1,4 +1,4 @@
-# Scheduling Prolog using Constraint logic
+# Scheduling Prolog using Constraint Logic Programming (CLP)
 
 This is a simple, gentle, and step-by-step example of how to use
 Prolog and constraint logic programmig (CLP) to schedule events
