@@ -140,7 +140,7 @@ class(13,[geol-1301-02],0).
 So we have a few classes (numbered 1-13), with some name, and needing to be placed at some time that is consistent with a time slot group. Here, `geol-1200-01` needs to be placed on Tues/Thurs
 according to a time in the group 1 time slots.  Class #6, or `geol-1206-1` shall be placed as a group 0 class.
 
-I feel like just which time to choose within a timeslot should be left up to Prolog, so no more specifics on how to place a class will be given.  Many might think trying a random time within a group of time slots is the way to go.  Maybe it is, maybe it isn't. Let's just let Prolog grapple with this.
+I feel like just which time to choose for a class, within a timeslot group, should be left up to Prolog. Thus, no more specifics on how to place a class will be given.  Many might think trying a random time within a group of time slots is the way to go.  Maybe it is, maybe it isn't. Let's just let Prolog grapple with this.
 
 
 Believe it or not, as complicated as "computer automated scheduling" may sound, that's it for our application.  I tell Prolog about valid time slots, and classes. From this alone, I want it to place the `M` classes (13 here), into `N` rooms, where `N` is a minimum.  In practice, this is run for `M=200+` classes, simply by extending the `class()` data set.  We also have about 6 or 7 time slot groups. 
@@ -150,10 +150,46 @@ By the way, these blocks are actual Prolog code. See how easy "the data" can be?
 
  # Thinking it through
 
- Here's where the Stackoverflow questions on Prolog break down. Given the data above, doesn't Prolog somehow just know what to do? Well no, so let's think it through. Given the data, what would we envision would be a successful scheduling algorithm? Here are some key goals:
+ Here's where the Stackoverflow questions on Prolog I alluded to above tend to break down: Given the data above, doesn't Prolog somehow just know what to do? No, so let's think it through. 
 
- * Get all classes placed into a room.
+ Given the data, what would we envision would be a successful scheduling algorithm? Here are some key goals:
 
- * Be sure when placing a class in a room, it doesn't conflict (or overlap) with another class already in it.
+ * Get a class to be placed.
 
- * Only place a class in a room once.
+ * Get its required time slot group.
+
+ * Place the class in some room, and when placing it, be sure it doesn't conflict (or overlap) with another class already in the room.
+
+ * Only place a class once (i.e. don't place the same class in more than 1 room).
+
+ * Keep doing this until all classes placed into a room.
+
+
+ This is all I can think of for this too. Seems like if all of the above is done, we just might have our rooms scheduled!
+
+## Main goal
+
+As you know, Prolog has goals you tell it to try and resolve with data.  Let's translate the above steps into Prolog:
+
+```prolog
+:- dynamic room/3.
+
+plan :-
+        class(ClassNum,_,TimeSlotGroup),
+        time_slot(TimeSlotGroup,DaysTimes),
+        fits_in_room(RoomNum,DaysTimes),
+        \+ room(_,ClassNum,_),
+        assert(room(RoomNum,ClassNum,DaysTimes)),
+        all_classes_placed,
+        listing(room).
+``` 
+
+We'll call our top-level goal `plan` and its logic is as follows:
+
+1. Get a class from the data using `class(ClassNum,_,TimeSlotGroup),` All we care about is the class number and what time slot group it requires. So we ignore the class name right now with the `_`.
+
+1. Ok, so given the class required `TimeSlotGroup`, using ` time_slot(TimeSlotGroup,DaysTimes),` to grab some proposed days and times (`DaysTimes`) from that time slot group. We don't know which `DaysTimes` Prolog will choose, but we'll leave that up to it (not us).
+
+1. So we have a class and are prepared to place it into a room, whose number is `RoomNum.` Let's be sure it doesn't conflict with a class that may already be in the room using `fits_in_room(RoomNum,DaysTimes)`.
+
+1. 
