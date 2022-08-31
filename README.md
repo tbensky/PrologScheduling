@@ -232,5 +232,12 @@ fits_in_room(RoomNum,ProposedDaysTimes) :-
 	no_overlap(ProposedDaysTimes,PlacedSoFar).
 ```
 
-It takes in some `RoomNum` and propopsed time pattern `ProposedDaysTimes`.  It generates a list of all classes placed thus far in room `RoomNum` using `findall(X,room(RoomNum,_,X),PlacedSoFar)`, then goes on to see if the proposed day/time pattern overlaps with another class already placed in the room.
+It takes in some `RoomNum` and propopsed time pattern `ProposedDaysTimes`.  It generates a list of all classes placed thus far in room `RoomNum` using `findall(X,room(RoomNum,_,X),PlacedSoFar)`, then goes on to see if the proposed day/time pattern overlaps with another class already placed in the room using `no_overlap()`, which looks like this
+
+```prolog
+no_overlap(_,[]).
+no_overlap(Proposed,[PlacedHead|PlacedTail]) :- 
+	\+ pair_overlap(Proposed,PlacedHead), 
+	no_overlap(Proposed,PlacedTail). 
+```
 
