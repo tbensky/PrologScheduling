@@ -186,7 +186,7 @@ plan :-
 
 We'll call our top-level goal `plan` and its logic is as follows:
 
-1. Get a class from the data using `class(ClassNum,_,TimeSlotGroup)`, All we care about at the moment is the class number and what time slot group it requires. So we ignore the class name right now with the `_`.
+1. Get a class from the data using `class(ClassNum,_,TimeSlotGroup)`. `ClassNum` will be the class's number (for easy reference), and `TimeSlotGroup` will its required time slot group. This is all just rote data at this point. All we care about at the moment is the class number and what time slot group it requires. So we ignore the class name right now with the `_`. We could do all of this using a class's name, but for now we'll just stick with its number.
 
 1. Ok, so given the class requires `TimeSlotGroup`, lets use ` time_slot(TimeSlotGroup,DaysTimes),` to grab some proposed (and specific) days and times (`DaysTimes`) from that time slot group. We don't know which `DaysTimes` Prolog will choose, but we'll leave that up to it (not us).
 
