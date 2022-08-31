@@ -48,12 +48,13 @@ and will post a few lines of `class(intro_to_coding,T,1:30-3:30)` for a scheduli
 thought like "What do I do now? I thought Prolog is supposed to know
 how to handle this."
 
-This is not the case. Prolog (just like your favorite procedural language) may know how to handle such things, but you still have to tell it how.  
-All told, Prolog is a just search language. It's core
-contains all of the best practices for matchibng data (you give it),
-to some pattern you are looking for (that you also give it). It returns
-"true" if it finds a match between the two.  It is generalized
-search language, that uses backtracking for search efficiency.  
+This is not the case. Prolog (just like your favorite procedural language) may
+be able to handle such things, but you still have to tell it how.  All told,
+Prolog is a just search language. It's core contains all of the best practices
+for matchibng data (you give it), to some pattern you are looking for (that you
+also give it). It returns
+"true" if it finds a match between the two.  It is generalized search language,
+ that uses backtracking for search efficiency.  
 
 The power of Prolog as I see it is twofold:
 
