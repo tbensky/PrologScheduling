@@ -78,7 +78,7 @@ The classes are specified (by me), as having a name, number, and
 required time slot. The time slot comes from a list of times that a class is allowed to be scheduled over. For example, one group of
 time slots (group 0, just for labeling sense) might be:
 
-```
+```prolog
 time_slot(0,[[m,w,f],[7,10,8,00]]).
 time_slot(0,[[m,w,f],[8,10,9,00]]).
 time_slot(0,[[m,w,f],[9,10,10,00]]).
@@ -95,6 +95,6 @@ time_slot(0,[[m,w,f],[19,10,20,00]]).
 time_slot(0,[[m,w,f],[20,10,21,00]]).
 ```
 
-This means any class that is needed to be schedule as a "group 0" class will need to be placed on Mon, Wed, or Fri, from 7:10-8am, 8:10-9am, etc.
-By the way, this is actual Prolog code. See how easy "the data" can be?
+This means any class that is needed to be schedule as a "group 0" class will need to be placed on Mon, Wed, or Fri, from 7:10-8am, 8:10-9am, etc. In other
+words, although a "group 0" class  is always 50 min long, it cannot just be placed at just any time, like 10:15am-11:05am.  By the way, this is actual Prolog code. See how easy "the data" can be?
 
