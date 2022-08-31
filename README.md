@@ -87,7 +87,7 @@ language, all you can think of is `for(i=0;i<1000000000;i++)`, which you already
 
 # Prolog and Scheduling: Getting Started
 
-## What scheduling I need
+## What scheduling need we have
 
 In the scheduling application here, we need to place college classes into available rooms.  We have `N` classrooms and `M` classes to be placed within the rooms.  The number of classes, `M`, can vary, and we'd like to
 pack the classes into a mininmal number of rooms. In other words, pack in the `M` classes, minimizing `N`.  
