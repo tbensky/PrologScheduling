@@ -216,7 +216,7 @@ Many times in our study of Prolog, utility routines is where we would usually ba
 
 1. More difficult to solve in Prolog.
 
-1. Not impressive or sexy, when we finally figure out how to grind them out in Prolog (not AIish, not Prology, nothing special). As a case in point, look at Quicksort implemented in Prolog. All we can say is "why" as in post it here (https://www.reddit.com/r/DiWHY/).
+1. Not impressive or sexy, when we finally figure out how to grind them out in Prolog (not AIish, not Prology, nothing special). As a case in point, look at Quicksort implemented in Prolog. All we can say is "why" as in post it here (https://www.reddit.com/r/DiWHY/). Yuck.
 
 More than once, we've wished Prolog would have some kind of embedded Python within it, that easily took and returned Prolog's native data types for some quick processing. Thus, quick procedural needs can be taken care of quickly.
 
