@@ -56,7 +56,7 @@ also give it). It returns
 "true" if it finds a match between the two.  It is generalized search language,
  that uses backtracking for search efficiency.  
 
-The power of Prolog as I see it is twofold:
+The power of Prolog as we see it is twofold:
 
 1. You don't have to go writing the search algorithms yourself. Prolog's are all professional-grade, so you can consider "large" search spaces. 
 
