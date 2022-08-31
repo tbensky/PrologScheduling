@@ -59,7 +59,7 @@ a "room full of classes."
 
 As Triska pointed out, if you've wandered over to Prolog, you probably
 have a difficult problem to solve. You're looking at Prolog because
-this is a difficult problem, and would also be made even more so if
+it is a difficult problem, and would also be made even more so if
 solved in a procedural language.  Prolog may make the implementation
 easier on you.
 
