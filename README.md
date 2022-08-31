@@ -188,8 +188,16 @@ We'll call our top-level goal `plan` and its logic is as follows:
 
 1. Get a class from the data using `class(ClassNum,_,TimeSlotGroup),` All we care about is the class number and what time slot group it requires. So we ignore the class name right now with the `_`.
 
-1. Ok, so given the class required `TimeSlotGroup`, using ` time_slot(TimeSlotGroup,DaysTimes),` to grab some proposed days and times (`DaysTimes`) from that time slot group. We don't know which `DaysTimes` Prolog will choose, but we'll leave that up to it (not us).
+1. Ok, so given the class requires `TimeSlotGroup`, lets use ` time_slot(TimeSlotGroup,DaysTimes),` to grab some proposed days and times (`DaysTimes`) from that time slot group. We don't know which `DaysTimes` Prolog will choose, but we'll leave that up to it (not us).
 
 1. So we have a class and are prepared to place it into a room, whose number is `RoomNum.` Let's be sure it doesn't conflict with a class that may already be in the room using `fits_in_room(RoomNum,DaysTimes)`.
 
-1. 
+1. We use Prolog's built in database `assert()` to keep track of placed classes. But before we assert a class into the database as being "placed," let's be sure we don't do so if it has already been placed using `\+ room(_,ClassNum,_)`. 
+
+1. If it hasn't been placed, we'll go ahead and place it then, using `assert(room(RoomNum,ClassNum,DaysTimes))`.
+
+1. Next we check if all classes have bee placed.
+
+1. If so, we list out the room assersions, so the user can see the result.
+
+
