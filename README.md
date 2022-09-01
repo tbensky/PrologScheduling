@@ -652,7 +652,11 @@ After watching the [Power of Prolog](https://www.metalevel.at/prolog) videos, we
 
 ## Shortcomings of our code
 
-We're upset Prolog constrained it room placement to a single room.  When we think about it, what else could it possibly do? We want Prolog to place classes in rooms, by number, minimizing the number of rooms.  The room number for a class first appears in the line `fits_in_room(RoomNum,DaysTimes)`, where we want to see if a given day/time conflicts with what's already placeed in room `RoomNum`. We're kind of lucky our code even ran here, because we never set `RoomNum` to any value at all! So Prolog assumes it can take on any value, and assigns it the `_` value. It is kind of telling us: pick any room you want and you can put 20 classes in it in this arrangement.  We have to coax it somehow to make up another room, while not ignoring these already placed classes.  Kind of workable, but contrived, and it limits Prolog view of all classes when trying to squeeze them all in.
+We're upset Prolog constrained its room placements to a single room.  When we think about it though, what else could it possibly do? Our plan is to have Prolog place classes in rooms, by number, minimizing the number of rooms when done.  
+
+The room number for a class first appears in the line `fits_in_room(RoomNum,DaysTimes)`, where we want to see if a given day/time conflicts with what's already placeed in room `RoomNum`. We're kind of lucky our code even ran here, because we never set `RoomNum` to any value at all! So Prolog assumes it can take on any value, and assigns it the `_` value. It is kind of telling us: pick any room you want, and you can place 20 classes into it using this arrangement.  We'd have to somehow coax Prolog into making up another room, while not ignoring these already placed classes.  Kind of workable, but contrived, and it limits Prolog view of all classes when trying to squeeze them all in.
+
+## A quick review of CLP
 
 
 
