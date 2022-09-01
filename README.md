@@ -23,7 +23,7 @@ and off, sometimes with a fair amount of intensity for a few weeks,
 then I set it down again for a long spell. I've been doing this for the
 better part of 30 years! Ouch! 
 
-This repo actually contains the very first Prolog program I've ever written., and I am not reminiscing here about some 30 year old Borland .pro file I found on an old 5 1/4" disk.  This first program was written during the summer of 2022! Yes, it took me this long to do something useful with Prolog! It's a program that I actually use to help with ongoing scheduling
+This repo actually contains the very first Prolog program I've ever written, and I am not reminiscing here about some 30 year old Borland .pro file I found on an old 5 1/4" disk.  This first program was written during the summer of 2022! Yes, it took me this long to do something useful with Prolog! It's a program that I actually use to help with ongoing scheduling
 work I do as part of my job. 
 
 
