@@ -283,7 +283,9 @@ pair_overlap([DaysA,TimesA],[DaysB,TimesB]) :-
 	times_overlap(TimesA,TimesB). 
 ```
 
-We got lucky implementing this one in Prolog.
+We got lucky implementing this one in Prolog. Why? Well in seeing if two classes overlap, first you need to see if they share a common day.  This means looking at class A's days of "MWF" and seeing if there's any overlap with class B's "MTR" days. How will one do this?
+
+ 
 
 
 
