@@ -327,7 +327,7 @@ all_classes_placed :-
 
 Again, we got kind of lucky on getting this implemented.  The `findall` predicate returns a list of all possible answers to a query.  In the first `findall`, we get a list of all classes needing placing into `AllClasses`. In the second, a list of all classes found placed in all rooms Prolog has allocated into `PlacedClasses`. We sort both lists and if they are identical, then all classes must have been placed.
 
-In all of these utility functions, we still submit a break-out Python environment would have suited us much better, but we're getting better at Prolog.
+In all of these utility functions, we still submit a break-out Python environment would have suited us much better, but I suppose we are getting better at Prolog through it all.
 
 # First run of the program
 
@@ -1024,6 +1024,8 @@ This works as follows, focusing on the line
 ```
  (must_place_in(ClassNum,RoomNum)  ; indomain(RoomNum)),
  ```
+
+Note the outer `(` and `)` are very important here.
 
  When trying to force Prolog to choose a value for `RoomNum`, we allow it to do so in one of two ways. First, we see if a constraint via the `must_place_in` predicate exists for a given `ClassNum`. If so, instantiate `RoomNum` to the required value. If `must_in_place` fails, as in, "class `ClassNum` has no fixed room requirement," then we defer to `indomain` to assign a value to `RoomNum`.  This is why we need the `must_place_in(_,_) :- fail.` definition, since we need `must_in_place` to explicitly fail to trigger `indomain`, if no explicit class room requirement is given. Running this indeed places the rooms as needed:
 
