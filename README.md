@@ -176,11 +176,9 @@ By the way, these blocks are actual Prolog code. See how easy "the data" can be?
 
  # Thinking it through
 
- Here's where the Stackoverflow questions on Prolog I alluded to above tend to break down: Given the data above, doesn't Prolog somehow just know what to do? No it does not.  At minimum some "cost" function needs to be specified so any algorithm knows how it's doing (see Lex/Norvig interview).  How would Prolog know your cost function for your hard problem?
+ Here's where the Stackoverflow questions on Prolog alluded to above tend to break down: Given the data above, doesn't Prolog somehow just know what to do? No it does not.  At minimum some "cost" function needs to be specified so any algorithm knows how it's doing (see Lex/Norvig interview).  How would Prolog know your cost function for your hard problem? Let's think it through. 
 
- Let's think it through. 
-
- Given the data, what would we envision would be a successful scheduling algorithm? Here are some key goals:
+Given the data, what would we envision of a successful scheduling algorithm? Here are some key goals:
 
 For each class to be placed:
 
@@ -190,7 +188,7 @@ For each class to be placed:
 
  * Only place it once.
 
- Keep doing this until all classes placed into a room.
+ Keep doing this until all classes placed into a room. Expand needed rooms, but being careful not to be wasteful with them (i.e. one class per room would work, but....).
 
 
  This is all we can think of for a scheduling algorithm. Seems like if all of the above is done, we just might have our rooms scheduled! A beauty of
