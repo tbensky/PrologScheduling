@@ -168,6 +168,9 @@ As a scheduling plan goes, we feel like just which time to choose for a class, w
 
 (Note: Genetic algorithms, heavily based on random numbers, can also be used for this. But we had trouble coming up with a way that would allow the algorithm full freedom to cross over and mutate, while also avoiding placing classes on top of one another. Does anyone have any hints in this regard?)
 
+
+#### We're ready
+
 Believe it or not, as complicated as "computer automated scheduling" may sound, that's it for our application.  We tell Prolog about valid time slots, and classes needing to be placed. From this alone, we want Prolog to place the `M` classes (13 here), into `N` rooms, where `N` is a minimum.  In practice, this is run for `M=200+` classes, simply by extending the `class()` data set.  We also have about 6 or 7 actual time slot groups. 
 
 By the way, these blocks are actual Prolog code. See how easy "the data" can be?
