@@ -700,7 +700,7 @@ Here, we use CLP(FD), where FD stands for "finite domain." Finite domain here me
 
 ## Adding CLP to our code
 
-So back to our `RoomNum` problem. Suppose we know we have at most 50 rooms to place rooms in (this is all the rooms our facility has, for example). Suppose as our `plan` goal begins, we tell Prolog that `RoomNum` is an open and flexible quantity, but it must only take on values between 1 and 50 (inclusive), or we'll be out of space.  Prolog+CLD means with this constraint alone, Prolog will now be happy to proceed with its solution search, almost as if `RoomNum` was given an exact values.
+So back to our `RoomNum` problem. Suppose we know we have at most 50 rooms to place rooms in (this is all the rooms our facility has, for example). As our `plan` goal begins, we tell Prolog that `RoomNum` is an open and flexible quantity, but it must only take on values between 1 and 50 (inclusive).  Prolog+CLD means with this constraint alone, Prolog will now be happy to proceed with its solution search, almost as if `RoomNum` was given an exact values.
 
 Let's modify our code and set this constrain like this:
 
@@ -717,10 +717,230 @@ plan :-
 ```
 
 
+Running this still gives the same result as above. But there are two aspects to Prolog+CLP: setting the constraint and forcing Prolog to choose values within the constraint.  Forcing values to be chosen is called "labeling" and can be done using the `indomain` or `labeling` predicates.  Here, we'll use `indomain`, which forces incremental choices of a given variable each time Prolog backtracks to it. So modifying our code to:
+
+
+```prolog
+plan :-
+        RoomNum #>= 1, RoomNum #=< 50,
+        indomain(RoomNum),
+        class(ClassNum,_,TimeSlotGroup),
+        time_slot(TimeSlotGroup,DaysTimes),
+        fits_in_room(RoomNum,DaysTimes),
+        \+ room(_,ClassNum,_),
+        assert(room(RoomNum,ClassNum,DaysTimes)),
+        all_classes_placed,
+        listing(room).  
+```
+finally works! We'll get an output like this:
+
+```prolog
+room(1, 1, [[m, t, w, r], [7, 10, 8, 0]]).
+room(1, 2, [[m, t, w, r], [8, 10, 9, 0]]).
+room(1, 3, [[m, t, w, r], [9, 10, 10, 0]]).
+room(1, 4, [[m, t, w, r], [10, 10, 11, 0]]).
+room(1, 5, [[m, t, w, r], [12, 10, 13, 0]]).
+room(1, 6, [[m, t, w, r], [13, 10, 14, 0]]).
+room(1, 7, [[m, t, w, r], [14, 10, 15, 0]]).
+room(1, 8, [[t, r], [15, 10, 16, 30]]).
+room(1, 9, [[t, r], [16, 40, 18, 0]]).
+room(1, 10, [[t, r], [18, 10, 19, 30]]).
+room(1, 11, [[t, r], [19, 40, 21, 0]]).
+room(1, 12, [[m, w, f], [11, 10, 12, 0]]).
+room(1, 15, [[m, w, f], [15, 10, 16, 0]]).
+room(1, 16, [[m, w, f], [16, 10, 17, 0]]).
+room(1, 17, [[m, w, f], [17, 10, 18, 0]]).
+room(1, 18, [[m, w, f], [18, 10, 19, 0]]).
+room(1, 19, [[m, w, f], [19, 10, 20, 0]]).
+room(1, 20, [[m, w, f], [20, 10, 21, 0]]).
+room(2, 13, [[t, r], [7, 40, 9, 0]]).
+room(2, 14, [[t, r], [9, 40, 11, 0]]).
+room(2, 21, [[m, w, f], [7, 10, 8, 0]]).
+room(2, 22, [[m, w, f], [8, 10, 9, 0]]).
+room(2, 23, [[m, w, f], [9, 10, 10, 0]]).
+room(2, 24, [[m, w, f], [10, 10, 11, 0]]).
+room(2, 25, [[m, w, f], [11, 10, 12, 0]]).
+room(2, 26, [[m, w, f], [12, 10, 13, 0]]).
+room(2, 27, [[m, w, f], [13, 10, 14, 0]]).
+room(2, 28, [[t, r], [12, 10, 13, 10]]).
+room(2, 29, [[t, r], [13, 40, 15, 0]]).
+room(2, 30, [[t, r], [15, 10, 16, 30]]).
+room(2, 31, [[t, r], [16, 40, 18, 0]]).
+room(2, 32, [[t, r], [18, 10, 19, 30]]).
+room(2, 33, [[t, r], [19, 40, 21, 0]]).
+room(2, 40, [[m, w, f], [14, 10, 15, 0]]).
+room(2, 46, [[m, w, f], [15, 10, 16, 0]]).
+room(2, 47, [[m, w, f], [16, 10, 17, 0]]).
+room(2, 48, [[m, w, f], [17, 10, 18, 0]]).
+room(2, 49, [[m, w, f], [18, 10, 19, 0]]).
+room(2, 50, [[m, w, f], [19, 10, 20, 0]]).
+room(2, 51, [[m, w, f], [20, 10, 21, 0]]).
+room(3, 34, [[t, r], [7, 40, 9, 0]]).
+room(3, 35, [[t, r], [9, 40, 11, 0]]).
+room(3, 36, [[t, r], [12, 10, 13, 10]]).
+room(3, 37, [[t, r], [13, 40, 15, 0]]).
+room(3, 38, [[t, r], [15, 10, 16, 30]]).
+room(3, 39, [[t, r], [16, 40, 18, 0]]).
+room(3, 41, [[t, r], [18, 10, 19, 30]]).
+room(3, 42, [[t, r], [19, 40, 21, 0]]).
+room(3, 52, [[m, w, f], [7, 10, 8, 0]]).
+room(3, 53, [[m, w, f], [8, 10, 9, 0]]).
+room(3, 64, [[m, w, f], [9, 10, 10, 0]]).
+room(3, 65, [[m, w, f], [10, 10, 11, 0]]).
+room(3, 66, [[m, w, f], [11, 10, 12, 0]]).
+room(3, 67, [[m, w, f], [12, 10, 13, 0]]).
+room(3, 68, [[m, w, f], [13, 10, 14, 0]]).
+room(3, 69, [[m, w, f], [14, 10, 15, 0]]).
+room(3, 70, [[m, w, f], [15, 10, 16, 0]]).
+room(3, 71, [[m, w, f], [16, 10, 17, 0]]).
+room(3, 86, [[m, w, f], [17, 10, 18, 0]]).
+room(3, 87, [[m, w, f], [18, 10, 19, 0]]).
+room(3, 92, [[m, w, f], [19, 10, 20, 0]]).
+room(3, 100, [[m, w, f], [20, 10, 21, 0]]).
+room(4, 43, [[t, r], [7, 40, 9, 0]]).
+room(4, 44, [[t, r], [9, 40, 11, 0]]).
+room(4, 45, [[t, r], [12, 10, 13, 10]]).
+room(4, 54, [[t, r], [13, 40, 15, 0]]).
+room(4, 55, [[t, r], [15, 10, 16, 30]]).
+room(4, 56, [[t, r], [16, 40, 18, 0]]).
+room(4, 57, [[t, r], [18, 10, 19, 30]]).
+room(4, 58, [[t, r], [19, 40, 21, 0]]).
+room(4, 101, [[m, w, f], [7, 10, 8, 0]]).
+room(4, 102, [[m, w, f], [8, 10, 9, 0]]).
+room(4, 103, [[m, w, f], [9, 10, 10, 0]]).
+room(4, 104, [[m, w, f], [10, 10, 11, 0]]).
+room(4, 105, [[m, w, f], [11, 10, 12, 0]]).
+room(4, 106, [[m, w, f], [12, 10, 13, 0]]).
+room(4, 107, [[m, w, f], [13, 10, 14, 0]]).
+room(4, 108, [[m, w, f], [14, 10, 15, 0]]).
+room(4, 109, [[m, w, f], [15, 10, 16, 0]]).
+room(4, 114, [[m, w, f], [16, 10, 17, 0]]).
+room(4, 115, [[m, w, f], [17, 10, 18, 0]]).
+room(4, 116, [[m, w, f], [18, 10, 19, 0]]).
+room(4, 117, [[m, w, f], [19, 10, 20, 0]]).
+room(4, 118, [[m, w, f], [20, 10, 21, 0]]).
+room(5, 59, [[t, r], [7, 40, 9, 0]]).
+room(5, 60, [[t, r], [9, 40, 11, 0]]).
+room(5, 61, [[t, r], [12, 10, 13, 10]]).
+room(5, 62, [[t, r], [13, 40, 15, 0]]).
+room(5, 63, [[t, r], [15, 10, 16, 30]]).
+room(5, 72, [[m, t, w, r], [17, 10, 18, 0]]).
+room(5, 73, [[m, t, w, r], [18, 10, 19, 0]]).
+room(5, 74, [[m, t, w, r], [19, 10, 20, 0]]).
+room(5, 75, [[m, t, w, r], [20, 10, 21, 0]]).
+room(5, 119, [[m, w, f], [7, 10, 8, 0]]).
+room(5, 120, [[m, w, f], [8, 10, 9, 0]]).
+room(5, 121, [[m, w, f], [9, 10, 10, 0]]).
+room(5, 123, [[m, w, f], [10, 10, 11, 0]]).
+room(5, 124, [[m, w, f], [11, 10, 12, 0]]).
+room(5, 125, [[m, w, f], [12, 10, 13, 0]]).
+room(5, 126, [[m, w, f], [13, 10, 14, 0]]).
+room(5, 127, [[m, w, f], [14, 10, 15, 0]]).
+room(5, 132, [[m, w, f], [15, 10, 16, 0]]).
+room(5, 133, [[m, w, f], [16, 10, 17, 0]]).
+room(6, 76, [[m, t, w, r], [7, 10, 8, 0]]).
+room(6, 77, [[m, t, w, r], [8, 10, 9, 0]]).
+room(6, 78, [[m, t, w, r], [9, 10, 10, 0]]).
+room(6, 79, [[m, t, w, r], [10, 10, 11, 0]]).
+room(6, 80, [[m, t, w, r], [12, 10, 13, 0]]).
+room(6, 81, [[m, t, w, r], [13, 10, 14, 0]]).
+room(6, 82, [[t, r], [15, 10, 16, 30]]).
+room(6, 83, [[t, r], [16, 40, 18, 0]]).
+room(6, 84, [[t, r], [18, 10, 19, 30]]).
+room(6, 85, [[t, r], [19, 40, 21, 0]]).
+room(6, 89, [[m, t, w, r], [14, 10, 15, 0]]).
+room(6, 134, [[m, w, f], [11, 10, 12, 0]]).
+room(6, 148, [[m, w, f], [15, 10, 16, 0]]).
+room(6, 149, [[m, w, f], [16, 10, 17, 0]]).
+room(6, 150, [[m, w, f], [17, 10, 18, 0]]).
+room(6, 151, [[m, w, f], [18, 10, 19, 0]]).
+room(6, 156, [[m, w, f], [19, 10, 20, 0]]).
+room(6, 168, [[m, w, f], [20, 10, 21, 0]]).
+room(7, 88, [[t, r], [7, 40, 9, 0]]).
+room(7, 90, [[m, t, w, r], [9, 10, 10, 0]]).
+room(7, 91, [[m, t, w, r], [10, 10, 11, 0]]).
+room(7, 93, [[t, r], [12, 10, 13, 10]]).
+room(7, 94, [[t, r], [13, 40, 15, 0]]).
+room(7, 95, [[t, r], [15, 10, 16, 30]]).
+room(7, 96, [[t, r], [16, 40, 18, 0]]).
+room(7, 97, [[t, r], [18, 10, 19, 30]]).
+room(7, 98, [[t, r], [19, 40, 21, 0]]).
+room(7, 169, [[m, w, f], [7, 10, 8, 0]]).
+room(7, 170, [[m, w, f], [8, 10, 9, 0]]).
+room(7, 171, [[m, w, f], [11, 10, 12, 0]]).
+room(7, 178, [[m, w, f], [12, 10, 13, 0]]).
+room(7, 179, [[m, w, f], [13, 10, 14, 0]]).
+room(7, 180, [[m, w, f], [14, 10, 15, 0]]).
+room(7, 181, [[m, w, f], [15, 10, 16, 0]]).
+room(7, 182, [[m, w, f], [16, 10, 17, 0]]).
+room(7, 183, [[m, w, f], [17, 10, 18, 0]]).
+room(7, 184, [[m, w, f], [18, 10, 19, 0]]).
+room(7, 185, [[m, w, f], [19, 10, 20, 0]]).
+room(7, 186, [[m, w, f], [20, 10, 21, 0]]).
+room(8, 99, [[t, r], [7, 40, 9, 0]]).
+room(8, 110, [[t, r], [9, 40, 11, 0]]).
+room(8, 111, [[t, r], [12, 10, 13, 10]]).
+room(8, 112, [[t, r], [13, 40, 15, 0]]).
+room(8, 113, [[t, r], [15, 10, 16, 30]]).
+room(8, 122, [[t, r], [16, 40, 18, 0]]).
+room(8, 128, [[t, r], [18, 10, 19, 30]]).
+room(8, 129, [[t, r], [19, 40, 21, 0]]).
+room(8, 187, [[m, w, f], [7, 10, 8, 0]]).
+room(8, 188, [[m, w, f], [8, 10, 9, 0]]).
+room(8, 193, [[m, w, f], [9, 10, 10, 0]]).
+room(8, 194, [[m, w, f], [10, 10, 11, 0]]).
+room(8, 195, [[m, w, f], [11, 10, 12, 0]]).
+room(9, 130, [[t, r], [7, 40, 9, 0]]).
+room(9, 131, [[t, r], [9, 40, 11, 0]]).
+room(9, 135, [[t, r], [12, 10, 13, 10]]).
+room(9, 136, [[t, r], [13, 40, 15, 0]]).
+room(9, 137, [[t, r], [15, 10, 16, 30]]).
+room(9, 138, [[t, r], [16, 40, 18, 0]]).
+room(9, 139, [[t, r], [18, 10, 19, 30]]).
+room(9, 140, [[t, r], [19, 40, 21, 0]]).
+room(10, 141, [[t, r], [7, 40, 9, 0]]).
+room(10, 142, [[t, r], [9, 40, 11, 0]]).
+room(10, 143, [[t, r], [12, 10, 13, 10]]).
+room(10, 144, [[t, r], [13, 40, 15, 0]]).
+room(10, 145, [[t, r], [15, 10, 16, 30]]).
+room(10, 146, [[t, r], [16, 40, 18, 0]]).
+room(10, 147, [[t, r], [18, 10, 19, 30]]).
+room(10, 152, [[t, r], [19, 40, 21, 0]]).
+room(11, 153, [[t, r], [7, 40, 9, 0]]).
+room(11, 154, [[t, r], [9, 40, 11, 0]]).
+room(11, 155, [[t, r], [12, 10, 13, 10]]).
+room(11, 157, [[t, r], [13, 40, 15, 0]]).
+room(11, 158, [[t, r], [15, 10, 16, 30]]).
+room(11, 159, [[t, r], [16, 40, 18, 0]]).
+room(11, 160, [[t, r], [18, 10, 19, 30]]).
+room(11, 161, [[t, r], [19, 40, 21, 0]]).
+room(12, 162, [[t, r], [7, 40, 9, 0]]).
+room(12, 163, [[t, r], [9, 40, 11, 0]]).
+room(12, 164, [[t, r], [12, 10, 13, 10]]).
+room(12, 165, [[t, r], [13, 40, 15, 0]]).
+room(12, 166, [[t, r], [15, 10, 16, 30]]).
+room(12, 167, [[t, r], [16, 40, 18, 0]]).
+room(12, 172, [[t, r], [18, 10, 19, 30]]).
+room(12, 173, [[t, r], [19, 40, 21, 0]]).
+room(13, 174, [[t, r], [7, 40, 9, 0]]).
+room(13, 175, [[t, r], [9, 40, 11, 0]]).
+room(13, 176, [[t, r], [12, 10, 13, 10]]).
+room(13, 177, [[t, r], [13, 40, 15, 0]]).
+room(13, 189, [[t, r], [15, 10, 16, 30]]).
+room(13, 190, [[t, r], [16, 40, 18, 0]]).
+room(13, 191, [[t, r], [18, 10, 19, 30]]).
+room(13, 192, [[t, r], [19, 40, 21, 0]]).
+room(14, 196, [[t, r], [7, 40, 9, 0]]).
+room(14, 197, [[t, r], [9, 40, 11, 0]]).
+room(14, 198, [[t, r], [12, 10, 13, 10]]).
+room(14, 199, [[t, r], [13, 40, 15, 0]]).
+room(14, 200, [[t, r], [15, 10, 16, 30]]).
+room(14, 201, [[t, r], [16, 40, 18, 0]]).
+```
 
 
 
-
+Here you'll see that all 201 classes have been placed, and we'll need 14 rooms to do it.
 
 
 
