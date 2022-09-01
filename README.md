@@ -12,8 +12,8 @@ does something useful.  (You can see some results of my dabbling [here](https://
 
 ## First a few thoughts
 
-I find Prolog to be an extremely satisfying language to use and mess around with. I first
-became aware of it with it back in '85 when Borland came out with Turbo Prolog 1
+I find Prolog to be an extremely satisfying language to use and mess around with, first
+becaming aware of it with it back in '85 when Borland came out with Turbo Prolog 1
 and then 2. I owned them both. The Borland manuals were great tutorials on
 Prolog (recently bought them all again on eBay). Kudos to the
 knowledgable people at Borland who wrote them. 
@@ -21,12 +21,11 @@ knowledgable people at Borland who wrote them.
 I look at Prolog on
 and off, sometimes with a fair amount of intensity for a few weeks,
 then I set it down again for a while. I've been doing with for the
-better part of 30 years! Ouch! This repo actually contains the very
-first Prolog program I wrote from scratch, to solve ongoing scheduling
-work I do. I actually use it, and I don't mean this in a
-historical sense. After all of these years, this is actually the
-first Prolog program I've written (in Aug 2022), during
-another one of my "let's try Prolog" phases.
+better part of 30 years! Ouch! 
+
+This repo actually contains the very first Prolog program I've ever written. I do not mean this in a historical sense. The program was written
+during the summer of 2022 (so recently)! I actually use it to help with ongoing scheduling
+work I do as part of my job. 
 
 
 Whenever I'm able to get Prolog to do something that I need, or have
