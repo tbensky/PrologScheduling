@@ -953,5 +953,41 @@ Starting at about Room 9, the density drops since the T/TH classes become all th
 
 ![Rooms13-14](https://github.com/tbensky/PrologScheduling/blob/master/Results/rooms13-14.png)
 
+# What now?
+
+So we developed a Prolog+CLP-based room scheduler. Here are a few closing thoughts.
+
+## More constraints
+
+Suppose we need a given class to be placed in a particular room. Maybe room #3 is a laboratory, so we need laboratory-based classes placed in there. Turns out something like this is farily straightfoward to add. Maybe room #7 has theater-like seating for lecture-only classes.
+
+First, put some `must_place` predicates under the `class` definitions, like this
+
+
+```prolog
+must_place_in(1,3).
+must_place_in(201,7).
+must_place_in(_,_) :- fail.
+```
+
+This means class 1 should be placed into room 3 and class 201 into room 7.  We'll explain the `must_place_in(_,_) :- fail` below.
+
+Next modify the `indomain` line to read as shown here.
+
+```prolog
+plan :-
+        RoomNum #>= 1, RoomNum #=< 50,
+        (must_place_in(ClassNum,RoomNum)  ; indomain(RoomNum)),
+        class(ClassNum,_,TimeSlotGroup),
+        time_slot(TimeSlotGroup,DaysTimes),
+        fits_in_room(RoomNum,DaysTimes),
+        \+ room(_,ClassNum,_),
+        assert(room(RoomNum,ClassNum,DaysTimes)),
+        all_classes_placed,
+        listing(room).
+```
+
+This works as follows. When trying to force Prolog to choose a value for `RoomNum`, we allow it to do so in one of two ways. First, we see if a constraint via the `must_place_in` predicate exists for a given class. If so, assign `RoomNum` to the required value. If `must_in_place` fails, as in, "class `ClassNum` has no fixed room requirement," then we defer to `indomain` to assign a value to `RoomNum`.  This is why we need the `must_place_in(_,_) :- fail.` definition, since we need `must_in_place` to explicitly fail to trigger `indomain`, if no explicit class room requirement is given.
+
 
 
