@@ -7,8 +7,8 @@ Prolog and constraint logic programmig (CLP) to schedule events
 ## Funny realization
 
 I've been dabbling with Prolog ever since high school. That was 30+ years
-ago. In all of this time, this repo contains the first Prolog program I've ever written myself, that actually
-does something useful.  (You can see some results of my dabbling [here](https://www.codebymath.com/index.php/welcome/lesson_menu#prolog) and [here](https://arxiv.org/abs/2108.09893).)
+ago. After all of this time, this repo contains (finally!) the first Prolog program I've ever written myself, that actually
+does something useful for me.  (You can see some results of my dabbling [here](https://www.codebymath.com/index.php/welcome/lesson_menu#prolog) and [here](https://arxiv.org/abs/2108.09893).)
 
 ## First a few thoughts
 
@@ -20,11 +20,10 @@ knowledgable people at Borland who wrote them.
 
 I look at Prolog on
 and off, sometimes with a fair amount of intensity for a few weeks,
-then I set it down again for a while. I've been doing with for the
+then I set it down again for a long spell. I've been doing this for the
 better part of 30 years! Ouch! 
 
-This repo actually contains the very first Prolog program I've ever written. I do not mean this in a historical sense. The program was written
-during the summer of 2022 (so recently)! I actually use it to help with ongoing scheduling
+This repo actually contains the very first Prolog program I've ever written. I am not reminiscing here. from 30 years ago, about some Borland .pro file I found on an old 5 1/4" disk.  This first program was written during the summer of 2022! Yes, it took me this long to do something useful with Prolog: a program that I actually use to help with ongoing scheduling
 work I do as part of my job. 
 
 
@@ -167,6 +166,7 @@ So we have a few classes (numbered 1-13), with some name, needing to be placed a
 
 As a scheduling plan goes, we feel like just which time to choose for a class, within a timeslot group, should be left up to Prolog. Thus, no more specifics on when to place a class will be given.  Many might think trying a random time within a group of time slots is the way to go.  Maybe it is, maybe it isn't. It's not here. (But a random number-based algorithm will place classes in rooms for you, but it has a funny convergence and completion problem.)  Let's just let Prolog grapple with this parameter.
 
+(Note: Genetic algorithms, heavily based on random numbers, can also be used for this. But we had trouble coming up with a way that would allow the algorithm full freedom to cross over and mutate, while also avoiding placing classes on top of one another. Does anyone have any hints in this regard?)
 
 Believe it or not, as complicated as "computer automated scheduling" may sound, that's it for our application.  We tell Prolog about valid time slots, and classes needing to be placed. From this alone, we want Prolog to place the `M` classes (13 here), into `N` rooms, where `N` is a minimum.  In practice, this is run for `M=200+` classes, simply by extending the `class()` data set.  We also have about 6 or 7 actual time slot groups. 
 
