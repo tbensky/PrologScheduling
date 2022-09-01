@@ -644,7 +644,7 @@ room(_, 19, [[m, w, f], [19, 10, 20, 0]]).
 room(_, 20, [[m, w, f], [20, 10, 21, 0]]).
 ```
 
-It appears as if Prolog was unable to instantiate any concrete room numbers, but placed 20 class in a single representative room.  Notice it packed the room farily well from 7:10-21:00 and even used up some T/R days in between all of the MWF and MTWR classes.  Nice job! But still what about some room numbers and placing all classes?  That's where Constraint Logic Programming (CLP) comes in. Get ready for some fun!
+It appears as if Prolog was unable to instantiate any concrete room numbers, but placed 20 classes in a single representative room.  Notice it packed the room farily well from 7:10-21:00 and even used up some T/R days in between all of the MWF and MTWR classes.  Nice job! But still what about some room numbers and placing all classes?  That's where Constraint Logic Programming (CLP) comes in. Get ready for some fun!
 
 # Constraint Logic Programming (CLP)
 
