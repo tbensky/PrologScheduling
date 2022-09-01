@@ -686,13 +686,36 @@ plan :-
         listing(room).
 ```
 
-You see that Prolog now numbers the room, but still contraints its room usage to just a single room.  In the next section, we'll see that instead of defining a room numnber, we can use the CLP add-ons to Prolog to *constrain* (that is, set an acceptable range) for values for `RoomNum`, which will help out a lot.
+You'll see that Prolog now numbers the room, but still contraints its room usage to just a single room.  In the next section, we'll see that instead of defining a room numnber, we can use the CLP add-ons to Prolog to *constrain* (that is, set an acceptable range) for values for `RoomNum`, which will help out a lot.
 
 
 
 ## A quick review of CLP
 
-We first learned of CLP addons to Prolog by watching the [Power of Prolog](https://www.metalevel.at/prolog) videos, in particular [this one](https://www.metalevel.at/prolog/clpz). There is also a good writeup on it [here](https://www.swi-prolog.org/man/clpfd.html)
+We first learned of CLP addons to Prolog by watching the [Power of Prolog](https://www.metalevel.at/prolog) videos, in particular [this one](https://www.metalevel.at/prolog/clpz). There is also a good writeup on it [here](https://www.swi-prolog.org/man/clpfd.html). There isn't a lot written about CLP + Prolog, so you'l have to dig and experiment on your own to make progress with it. (Maybe this repo can even add to the "literature" on it?)
+
+In sum, Constraint Logic Programming CLP is a way of constraining the numerical value a given variable can have in a solution. In CLPD+Prolog, this constraint is enough to allow its search to continue, without knowing a precise value for a given variable.  This idea will hopefully help Prolog to prune a search space, based on such constraints.  
+
+Here, we use CLP(FD), where FD stands for "finite domain." Finite domain here means some data type that has a "finite" feel to it. For computers, this usually means integers.  On a 16-bit machine, the largest integer is 65,535.  The same for 32-bits would be 2,147,483,647 and 64-bits 9,223,372,036,854,775,807. Now the 32 and 64 bit ranges are quite large, but maybe still somewhat searchable given the right guidance.
+
+## Adding CLP to our code
+
+So back to our `RoomNum` problem. Suppose we know we have at most 50 rooms to place rooms in (this is all the rooms our facility has, for example). Suppose as our `plan` goal begins, we tell Prolog that `RoomNum` is an open and flexible quantity, but it must only take on values between 1 and 50 (inclusive), or we'll be out of space.  Prolog+CLD means with this constraint alone, Prolog will now be happy to proceed with its solution search, almost as if `RoomNum` was given an exact values.
+
+Let's modify our code and set this constrain like this:
+
+```prolog
+plan :-
+        RoomNum #>= 1, RoomNum #=< 50,
+        class(ClassNum,_,TimeSlotGroup),
+        time_slot(TimeSlotGroup,DaysTimes),
+        fits_in_room(RoomNum,DaysTimes),
+        \+ room(_,ClassNum,_),
+        assert(room(RoomNum,ClassNum,DaysTimes)),
+        all_classes_placed,
+        listing(room).  
+```
+
 
 
 
