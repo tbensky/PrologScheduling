@@ -732,7 +732,10 @@ plan :-
         all_classes_placed,
         listing(room).  
 ```
-finally works! We'll get an output like this:
+
+## Results at last!
+
+Finally it works! We'll get an output like this:
 
 ```prolog
 room(1, 1, [[m, t, w, r], [7, 10, 8, 0]]).
