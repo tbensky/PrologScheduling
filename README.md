@@ -274,5 +274,17 @@ no_overlap(Proposed,[PlacedHead|PlacedTail]) :-
 
 The second finds the head of the list of classes in a room (i.e. the first element in the list) and sees if it conflicts with the proposed time by calling `pair_overlap`, which checks to see if the start and end times of two events overlap (see below).  (The two events are the proposed time to place a class and just one of the possibly many classes already placed in a room.) If they do not overlap, the tail (list minus the just checked head) is now passed back into `no_overlap` for checking, which is a new (shorter) list, gradually heading toward the empty `[]` list that will satisfy the terminal clause, and stop the recursion. (This is if the list reduction makes it that far; it will if none of the event-pairs tested overlap in time.)
 
+The `pair_overlap` clause looks like this.
+
+```
+pair_overlap([DaysA,TimesA],[DaysB,TimesB]) :- 
+	intersection(DaysA,DaysB,S), 
+	\+ length(S,0), 
+	times_overlap(TimesA,TimesB). 
+```
+
+We got lucky implementing this one in Prolog.
+
+
 
 
