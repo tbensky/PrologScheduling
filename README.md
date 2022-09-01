@@ -621,7 +621,30 @@ plan :-
 plan :- listing(room).
 ```
 
-If this is saved as `start0.pl`, we can run it using `swipl -f start0.pl -g 'plan, halt.'`
+If this is saved as `start0.pl`, we can run it using `swipl -f start0.pl -g 'plan, halt.'` We'll get this as the output
 
+```prolog
+room(_, 1, [[m, t, w, r], [7, 10, 8, 0]]).
+room(_, 2, [[m, t, w, r], [8, 10, 9, 0]]).
+room(_, 3, [[m, t, w, r], [9, 10, 10, 0]]).
+room(_, 4, [[m, t, w, r], [10, 10, 11, 0]]).
+room(_, 5, [[m, t, w, r], [12, 10, 13, 0]]).
+room(_, 6, [[m, t, w, r], [13, 10, 14, 0]]).
+room(_, 7, [[m, t, w, r], [14, 10, 15, 0]]).
+room(_, 8, [[t, r], [15, 10, 16, 30]]).
+room(_, 9, [[t, r], [16, 40, 18, 0]]).
+room(_, 10, [[t, r], [18, 10, 19, 30]]).
+room(_, 11, [[t, r], [19, 40, 21, 0]]).
+room(_, 12, [[m, w, f], [11, 10, 12, 0]]).
+room(_, 15, [[m, w, f], [15, 10, 16, 0]]).
+room(_, 16, [[m, w, f], [16, 10, 17, 0]]).
+room(_, 17, [[m, w, f], [17, 10, 18, 0]]).
+room(_, 18, [[m, w, f], [18, 10, 19, 0]]).
+room(_, 19, [[m, w, f], [19, 10, 20, 0]]).
+room(_, 20, [[m, w, f], [20, 10, 21, 0]]).
+```
 
+It appears as if Prolog was unable to instantiate any concrete room numbers, but placed 20 class in a single representative room.  Notice it packed the room farily well from 7:10-21:00 and even used up some T/R days in between all of the MWF and MTWR classes.  Nice job! But still what about some room numbers and placing all classes?  That's where Constraint Logic Programming (CLP) comes in. Get ready for some fun!
+
+# Constraint Logic Programming (CLP)
 
