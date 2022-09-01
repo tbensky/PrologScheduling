@@ -310,7 +310,7 @@ This utility function did adapt well to Prolog: keep cranking through the sequen
 We originally had times in the data like this `time_slot(0,[[m,w,f],[7:10-8:00]])`, and were hoping to have `times_overlap` look like this
 
 ```prolog
-times_overlap(SH1:SM1-EH1:EM1,SH2:SM2-EH2:EM2),
+times_overlap([SH1:SM1-EH1:EM1],[SH2:SM2-EH2:EM2]),
 ```
 
 but we could not get Prolog to instantiate the variables as needed. It would just kind of run and do nothing. Anyone know why?
