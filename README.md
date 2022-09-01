@@ -276,7 +276,7 @@ The second finds the head of the list of classes in a room (i.e. the first eleme
 
 The `pair_overlap` clause looks like this.
 
-```
+```prolog
 pair_overlap([DaysA,TimesA],[DaysB,TimesB]) :- 
 	intersection(DaysA,DaysB,S), 
 	\+ length(S,0), 
