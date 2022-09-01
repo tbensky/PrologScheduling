@@ -716,8 +716,39 @@ plan :-
         listing(room).  
 ```
 
+Here you'll note `#>=` and `#=<` are the CLP replacements for `>=` and `=<`.  In traditional Prolog,  `RoomNum >= 1, RoomNum =< 50,` would immediately fail, and Prolog would be unable to advanced past this line. (Try it. The program will run, but will not place any classes.)
 
-Running this still gives the same result as above. But there are two aspects to Prolog+CLP: setting the constraint and forcing Prolog to choose values within the constraint.  Forcing values to be chosen is called "labeling" and can be done using the `indomain` or `labeling` predicates.  Here, we'll use `indomain`, which forces incremental choices of a given variable each time Prolog backtracks to it. So modifying our code to:
+Running the code with the `#>=` and `#=<` operators put back in still will allow the code to run, but gives the same result as above (that is `_` for all room numbers). This is because there are two aspects to Prolog+CLP: 
+
+1. Setting the constraint and 
+
+1. Forcing Prolog to choose values for variables, within the constraints given.  
+
+Forcing values to be chosen is called "labeling" and can be done using the `indomain` or `labeling` predicates.  Here, we'll use `indomain`, which forces incremental choices of a given variable each time Prolog backtracks to it. 
+
+You can test this as follows. Load up SWI-Prolog and type the following:
+
+```prolog
+?- use_module(library(clpfd)).
+?- RoomNum #> 0, RoomNum #< 50.
+```
+
+The output will be
+
+```prolog
+RoomNum in 0..50.
+```
+
+But if you type this line
+
+```prolog
+?- RoomNum #>= 0, RoomNum #=< 50, indomain(RoomNum).
+```
+
+You'll see indeed Prolog will begin iterating through the bounds for `RoomNum`. You can also try ` RoomNum #>= 0, RoomNum #=< 50, label([RoomNum]).` where `label` and `labeling` are predicates you can read about [here](https://www.swi-prolog.org/pldoc/man?section=clpfd).
+
+So all we've done by settin the constraint, is to internally let Prolog know that `RoomNum` has to be between 0 and 50.
+So modifying our code to:
 
 
 ```prolog
@@ -732,6 +763,8 @@ plan :-
         all_classes_placed,
         listing(room).  
 ```
+
+will indeed give us some nice results.
 
 ## Results at last!
 
@@ -987,7 +1020,45 @@ plan :-
         listing(room).
 ```
 
-This works as follows. When trying to force Prolog to choose a value for `RoomNum`, we allow it to do so in one of two ways. First, we see if a constraint via the `must_place_in` predicate exists for a given class. If so, assign `RoomNum` to the required value. If `must_in_place` fails, as in, "class `ClassNum` has no fixed room requirement," then we defer to `indomain` to assign a value to `RoomNum`.  This is why we need the `must_place_in(_,_) :- fail.` definition, since we need `must_in_place` to explicitly fail to trigger `indomain`, if no explicit class room requirement is given.
+This works as follows, focusing on the line
+
+```
+ (must_place_in(ClassNum,RoomNum)  ; indomain(RoomNum)),
+ ```
+
+ When trying to force Prolog to choose a value for `RoomNum`, we allow it to do so in one of two ways. First, we see if a constraint via the `must_place_in` predicate exists for a given `ClassNum`. If so, instantiate `RoomNum` to the required value. If `must_in_place` fails, as in, "class `ClassNum` has no fixed room requirement," then we defer to `indomain` to assign a value to `RoomNum`.  This is why we need the `must_place_in(_,_) :- fail.` definition, since we need `must_in_place` to explicitly fail to trigger `indomain`, if no explicit class room requirement is given. Running this indeed places the rooms as needed:
+
+ ```prolog
+room(3, 1, [[m, t, w, r], [7, 10, 8, 0]]).
+room(7, 201, [[t, r], [7, 40, 9, 0]]).
+room(1, 2, [[m, t, w, r], [7, 10, 8, 0]]).
+room(1, 3, [[m, t, w, r], [8, 10, 9, 0]]).
+room(1, 4, [[m, t, w, r], [9, 10, 10, 0]]).
+room(1, 5, [[m, t, w, r], [10, 10, 11, 0]]).
+room(1, 6, [[m, t, w, r], [12, 10, 13, 0]]).
+room(1, 7, [[m, t, w, r], [13, 10, 14, 0]]
+	...
+	...
+```
+
+## More constraints
+
+More scheduling constraints are possible. Some we haven't explored yet:
+
+* Being sure two or more classes are offered in sequence on a particular day.
+
+* Being sure some classes are not offered at the same time (no matter the room).
+
+* Linking the offerings times of 3 classes. For example, a lecture class that also have labs associated with it.  We might want the labs occur on off-days for the lecture.
+
+We're sure there are scheduling constraint out there.
 
 
 
+## Enumerating your plan
+
+With CLP, it becomes important to phrase your logic in terms of integers.  In this case, we used room numbers as integers to work with CLP, that can then be mapped to actual rooms with actual locations later.  
+
+Another parameter worth enumerating here may be the time of day chosen for a class, in a given time slot group (meaning the `DaysTimes` variable). This would be constrained between the total possible time slots (14 for time slot 0). This means both the room number and `DaysTimes` would be undetermined variables open for optimization by the search. 
+
+This may sound a bit circular, but `DaysTimes` is now chosen by rote data pulling via the line `time_slot(TimeSlotGroup,DaysTimes)`, which may be somewhat constraining to the search.  We note in particular when using the `must_place` constraint how the affected classes are place very first, at the first possible time slot allowed for that class. This may not be optimal for overall room packing for the schedule as a whole, but may be if `DaysTimes` was enumerated, and constrained as suggested here.   We have not tried this yet.
