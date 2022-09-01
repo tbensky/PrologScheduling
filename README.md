@@ -161,7 +161,10 @@ class(12,[geol-1301-01],0).
 class(13,[geol-1301-02],0).
 ```
 
-So we have a few classes (numbered 1-13), with some name, and needing to be placed at some time that is consistent with a required time slot group. Here, `geol-1200-01` needs to be placed on Tues/Thurs according to a time in the group 1 time slots.  Class #6, or `geol-1206-1` shall be placed as a group 0 class.
+So we have a few classes (numbered 1-13), with some name, needing to be placed at some time that is consistent with a required time slot group. Here, `geol-1200-01` needs to be placed on Tues/Thurs according to a time in the group 1 time slots.  Class #6, or `geol-1206-1` shall be placed as a group 0 class.
+
+
+### Hmmm....scheduling these classes
 
 As a scheduling plan goes, we feel like just which time to choose for a class, within a timeslot group, should be left up to Prolog. Thus, no more specifics on when to place a class will be given.  Many might think trying a random time within a group of time slots is the way to go.  Maybe it is, maybe it isn't. (It's not here, but a random number based algorithm will place classes for you, but it has a funny convergence and completion problem.)  Let's just let Prolog grapple with this parameter.
 
