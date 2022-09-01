@@ -272,7 +272,7 @@ no_overlap(Proposed,[PlacedHead|PlacedTail]) :-
 
 `no_overlap` borrows from Prolog's `member` implementation (see rant above), in iterating through a Prolog-list of all classes placed in a given room at this moment. It has two clauses. The first, which is also the termination clause for the recursion, says "any time pattern does not overlap with anything else, if the room is empty."
 
-The second finds the head of the list of classes in a room (i.e. the first element in the list) and sees if it conflicts with the proposed time by calling `pair_overlap`, which checks to see if the start and end times of two events overlap (see below).  If they do not, the tail (list minus the just checked head) is now passed back into `no_overlap` for checking as a new (shorter) list that is gradually heads toward the empty `[]` list that will satisfy the terminal clause.
+The second finds the head of the list of classes in a room (i.e. the first element in the list) and sees if it conflicts with the proposed time by calling `pair_overlap`, which checks to see if the start and end times of two events overlap (see below).  (The two events at are the proposed time to place a class and one of the possibly many classes already placed in a room.) If they do not overlap, the tail (list minus the just checked head) is now passed back into `no_overlap` for checking as a new (shorter) list that is gradually heads toward the empty `[]` list that will satisfy the terminal clause.
 
 
 
