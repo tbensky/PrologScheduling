@@ -227,7 +227,7 @@ We'll call our top-level goal `plan` and its logic is as follows:
 
 1. If so, we list out the room assertions using `listing(room)`, so the user can see the result.
 
-The `:- dynamic room/3.` is a Prolog directive, telling it as the assertions of `room` (with 3 parameters) into the database is done at runtime (dynamically); `room` does not have any static representations in static data.
+The `:- dynamic room/3.` is a Prolog directive, telling it the assertions of `room` (with 3 parameters) into the database is done at runtime (dynamically); `room` does not have any static representations (like `class` and `timeslot` do).
 
 ## The utility routines
 
