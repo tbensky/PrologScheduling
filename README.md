@@ -6,8 +6,8 @@ Prolog and constraint logic programmig (CLP) to schedule events
 
 ## Funny realization
 
-I've been dabbling with Prolog every since high school. That was 30+ years
-ago. In all of this time, this is the first Prolog program I've ever written myself, that actually
+I've been dabbling with Prolog ever since high school. That was 30+ years
+ago. In all of this time, this repo comtains the first Prolog program I've ever written myself, that actually
 does something useful.  (You can see some results of my dabbling [here](https://www.codebymath.com/index.php/welcome/lesson_menu#prolog) and [here](https://arxiv.org/abs/2108.09893).)
 
 ## First a few thoughts
