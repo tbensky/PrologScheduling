@@ -75,7 +75,7 @@ that ensures classes aren't placed on top of each other, some kind of
 termination condition, some data structure that even models
 a "room full of classes," etc.
 
-As Triska pointed out, if you've wandered over to Prolog, it's probably because you
+As [Triska](https://www.metalevel.at/prolog) pointed out, if you've wandered over to Prolog, it's probably because you
 have a difficult problem to solve. Likely with a large phase-space to explore.
  You're looking at Prolog because even at the start, you are already stuck on what to do. You maybe don't
  see an easy route in a procedural language.  
