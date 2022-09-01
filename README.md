@@ -245,7 +245,7 @@ For us, this is precisely where we'd usually bail out and abandon our entire Pro
 
 1. More difficult to solve in Prolog than in a procedural language.
 
-1. Not impressive or sexy, when we finally figure out how to grind them out in Prolog (they are not AI-ish, not Prology, nothing special). As a case in point, look at Quicksort implemented in Prolog. All we can say is "why," and when done, just post it here (https://www.reddit.com/r/DiWHY/) and find something else to do. Yuck.  Funny though, this is how all books on Prolog in the 80s and 90s were written.  "Let's see if we can implement QuickSort in Prolog." We read all of those books and they were a real turn-off.  This was also the time period that preceeded to the AI-winter.
+1. Not impressive or sexy, when we finally figure out how to grind them out in Prolog (they are not AI-ish, not Prology, nothing special). As a case in point, look the Quicksort implemented in Prolog. All we can say is "why," and when done, just post it here (https://www.reddit.com/r/DiWHY/) and find something else to do. Yuck.  Funny though, this is how all books on Prolog in the 80s and 90s were written.  "Let's see if we can implement QuickSort in Prolog." We read all of those books and they were a real turn-off.  This was also the time period that preceeded to the AI-winter.
 
 More than once, we've wished Prolog would have some kind of embedded Python within it, that could easily take and return Prolog's native data types for some quick processing. You know, allow us to implement some small quick task quickly.
 
