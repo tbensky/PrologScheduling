@@ -95,6 +95,7 @@ pack the classes into a minimal number of rooms. In other words, pack in the `M`
 The classes are specified (by us), as having a name, number, and
 required time slot. 
 
+### Time slots
 The time slot comes from a list of times that a class is allowed to be scheduled into. For example, one group of
 time slots (group 0, just for labeling sense) might be:
 
@@ -117,7 +118,7 @@ time_slot(0,[[m,w,f],[20,10,21,00]]).
 
 These are the classes that meet 3x/week on Mon, Wed, and Fri.  So any class that is needed to be schedule as a `group 0` class will need to be placed to occupy a Mon, Wed, and Fri, with any
 of the specified times, 7:10-8am or 8:10-9am or 9:10am-10am, etc. In other
-words, although a `group 0` class  is always 50 min long, meets MWF, and must have a time pattern give; it cannot just be placed at just any time, like MWF, 10:15am-11:05am. 
+words, although a `group 0` class  is always 50 min long, meets MWF, and must have a time pattern given; it cannot just be placed at just any time, like MWF, 10:15am-11:05am. 
 
 Here are some more time slots for `group 1` Tues/Thurs (t=tues, r=thurs) classes:
 
@@ -141,6 +142,7 @@ time_slot(1,[[t,r],[20,10,21,30]]).
 time_slot(1,[[t,r],[20,40,22,00]]).
 ```
 
+### The classes
 Here is a list of how classes are specified. These are the classes we need to place in rooms.
 
 ```prolog
