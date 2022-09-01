@@ -332,7 +332,7 @@ In all of these utility functions, we still submit a break-out Python environmen
 
 # First run of the program
 
-The complete code is here:
+The complete code is here with 201 classes to place. (The class data was randomly generated and is hypothetical.)
 ```prolog
 :- use_module(library(clpfd)).
 
@@ -621,9 +621,7 @@ plan :-
 plan :- listing(room).
 ```
 
-
-
-
+If this is saved as `start0.pl`, we can run it using `swipl -f start0.pl -g 'plan, halt.'`
 
 
 
