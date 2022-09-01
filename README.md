@@ -235,7 +235,7 @@ We can't run our code just yet, as some calls are not defined, namely `fits_in_r
 
 ### Pure Prolog can be irritating
 
-Many times in our study of Prolog, utility routines are needed. These are short routines that help the main search algorithm along, by checking that various conditions are being met. They help to guide the search and ultimately prune the large search space.  
+Many times in our study of Prolog, utility routines are needed. These are short boring-ish routines that help the main search algorithm along, by checking that various conditions are being met. They help to guide the search and ultimately allow it to prune large search spaces.  
 
 For us, this is precisely where we'd usually bail out and abandon our entire Prolog project. Why? Because usually the utililty routines are 
 
