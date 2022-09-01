@@ -143,7 +143,7 @@ time_slot(1,[[t,r],[20,40,22,00]]).
 ```
 
 ### The classes
-Here is a list of how classes are specified. These are the classes we need to place in rooms.
+Here is a list of how classes, showing how they are specified. These are the classes we need to place in rooms.
 
 ```prolog
 class(1,[geol-1200-01],1).
