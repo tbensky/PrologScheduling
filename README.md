@@ -7,8 +7,8 @@ Prolog and constraint logic programmig (CLP) to schedule events
 ## Funny realization
 
 I've been dabbling with Prolog every since high school. That was 30+ years
-ago. This is the first Prolog program I've ever written myself, that actually
-does something useful.
+ago. In all of this time, this is the first Prolog program I've ever written myself, that actually
+does something useful.  (You can see some results of my dabbling (https://www.codebymath.com/index.php/welcome/lesson_menu#prolog)[here] and (https://arxiv.org/abs/2108.09893)[here].)
 
 ## First a few thoughts
 
@@ -285,7 +285,7 @@ pair_overlap([DaysA,TimesA],[DaysB,TimesB]) :-
 
 We got lucky implementing this one in Prolog. Why? Well in seeing if two classes overlap, first you need to see if they share a common day.  This means looking at class A's days of "MWF" and seeing if there's any overlap with class B's "MTR" days. How will one do this?
 
- 
+
 
 
 
