@@ -301,7 +301,21 @@ times_overlap(T1,T2) :-
                         Start1 =< End2, End1 >= Start2.
 ```
 
-The times needing checking for overlap, `T1` and `T2`, each come in as a list like `[8,10,9,00]` meaning a class that meets from 8:10am to 9:00am.  The `nth1` predicates simply extract the nth (1=first) element of a list. So, we pull out the start and end hours and minutes from each time, `T1` and `T2`, convert them all to total minutes into the day, then check for overlap, using the very enjoyable discussion on this topic at [this page](https://stackoverflow.com/questions/325933/determine-whether-two-date-ranges-overlap).  This utility function did adapt well to Prolog: keep cranking through the list of predicates and if all true to the end, then you have yourself two overlapping times. Again, we're lucky to have the `nth1` predicates, because there would be another mini-, day-long, and potentially show stopping project: write a predicate to return the nth element of a list.
+The times needing checking for overlap, `T1` and `T2`, each come in as a list like `[8,10,9,00]` meaning a class that meets from 8:10am to 9:00am.  The `nth1` predicates simply extracts the nth (1=first) element of a list. 
+
+So, we pull out the start and end hours and minutes from each time, `T1` and `T2`, convert them all to total minutes into the day, then check for overlap, using the very enjoyable discussion on this topic at [this page](https://stackoverflow.com/questions/325933/determine-whether-two-date-ranges-overlap).  
+
+This utility function did adapt well to Prolog: keep cranking through the sequence of predicates to feed the final decision on overlapping which is the ` Start1 =< End2, End1 >= Start2` logic.  Again, we're lucky to have the `nth1` predicates, because there would be another mini-, day-long, and potentially show stopping project: write a predicate to return the nth element of a list.
+
+We originally had times in the data like this `time_slot(0,[[m,w,f],[7:10-8:00]])`, and were hoping to have `times_overlap` look like this
+
+```prolog
+times_overlap(SH1:SM1-EH1:EM1,SH2:SM2-EH2:EM2),
+```
+
+but we could not get Prolog to instantiate the variables as needed. It would just kind of run and do nothing. Anyone know why?
+
+
 
 
 
