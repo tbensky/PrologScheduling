@@ -652,12 +652,47 @@ After watching the [Power of Prolog](https://www.metalevel.at/prolog) videos, we
 
 ## Shortcomings of our code
 
-We're upset Prolog constrained its room placements to a single room.  When we think about it though, what else could it possibly do? Our plan is to have Prolog place classes in rooms, by number, minimizing the number of rooms when done.  
+With our code at the moment, Prolog constrained its class placements to a single room. Recall our plan is to have Prolog place classes in rooms, minimizing the number of rooms used when done.  So why doesn't it expand it solution to encompass more rooms and get all classes placed?  Hmmmm.  When we think about it though, what else could it possibly do?
 
-The room number for a class first appears in the line `fits_in_room(RoomNum,DaysTimes)`, where we want to see if a given day/time conflicts with what's already placeed in room `RoomNum`. We're kind of lucky our code even ran here, because we never set `RoomNum` to any value at all! So Prolog assumes it can take on any value, and assigns it the `_` value. It is kind of telling us: pick any room you want, and you can place 20 classes into it using this arrangement.  We'd have to somehow coax Prolog into making up another room, while not ignoring these already placed classes.  Kind of workable, but contrived, and it limits Prolog view of all classes when trying to squeeze them all in.
+The room number for a class first appears in the line `fits_in_room(RoomNum,DaysTimes)`, where we want to see if a given day/time chosen for a would-be class to place onflicts with what's already placed in room `RoomNum`. We're kind of lucky our code even runs at all, because we never set `RoomNum` to any value at all! 
+
+So Prolog assumes it can take on any value, and assigns it the `_` value. It is kind of telling us: pick any room you want, and here are 20 classes you can place into it using this arrangement.  We'd have to somehow coax Prolog into making up another room, while not ignoring these already placed classes.  Kind of workable, but contrived, and it limits Prolog view of all classes when trying to squeeze them all in.
+
+What about assigning `RoomNum` to some value manually?  Try editing the `plan` goal to read
+
+```prolog
+plan :-
+        RoomNum is 1,
+        class(ClassNum,_,TimeSlotGroup),
+        time_slot(TimeSlotGroup,DaysTimes),
+        fits_in_room(RoomNum,DaysTimes),
+        \+ room(_,ClassNum,_),
+        assert(room(RoomNum,ClassNum,DaysTimes)),
+        all_classes_placed,
+        listing(room).
+```
+
+or even
+
+```prolog
+plan :-
+        random(1,10,RoomNum),
+        class(ClassNum,_,TimeSlotGroup),
+        time_slot(TimeSlotGroup,DaysTimes),
+        fits_in_room(RoomNum,DaysTimes),
+        \+ room(_,ClassNum,_),
+        assert(room(RoomNum,ClassNum,DaysTimes)),
+        all_classes_placed,
+        listing(room).
+```
+
+You see that Prolog now numbers the room, but still contraints its room usage to just a single room.  In the next section, we'll see that instead of defining a room numnber, we can use the CLP add-ons to Prolog to *constrain* (that is, set an acceptable range) for values for `RoomNum`, which will help out a lot.
+
+
 
 ## A quick review of CLP
 
+We first learned of CLP addons to Prolog by watching the [Power of Prolog](https://www.metalevel.at/prolog) videos, in particular [this one](https://www.metalevel.at/prolog/clpz). There is also a good writeup on it [here](https://www.swi-prolog.org/man/clpfd.html)
 
 
 
