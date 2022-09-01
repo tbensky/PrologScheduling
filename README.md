@@ -283,8 +283,25 @@ pair_overlap([DaysA,TimesA],[DaysB,TimesB]) :-
 	times_overlap(TimesA,TimesB). 
 ```
 
-We got lucky implementing this one in Prolog. Why? Well in seeing if two classes overlap, first you need to see if they share a common day.  This means looking at class A's days of "MWF" and seeing if there's any overlap with class B's "MTR" days. How will one do this?
+We got lucky implementing this one in Prolog. Why? Well in seeing if two classes overlap, first we need to see if they share a common day of the week.  This means looking at class A's of days, say "MWF", and seeing if there's any overlap with class B's days, perhaps "MTR." days. How will one do this? 
 
+In Prolog we were dreading recursively iterating through two lists in order to somehow find matching day characters. As mentioned, this feels like a small project in itself, that would take a whole day to figure out.  As it often does for us in Prolog, this task, so easily done in a procedural language, would likely have killed (or severely delayed) the whole project. 
+
+Luckily Prolog lists can be thought of as sets, and [SWI-Prolog](https://www.swi-prolog.org), which we used here has ready-made predicates for union, intersection, subtract, and subset of lists. Our need was for the intersection, which returns all elements in common between two lists. So `intersection([m,w,f],[w,f],L)` would instantiate `L` to `[w,f]`.  So checking if two classes have any days in common reduces to seeing if the intesection list is of length zero or not.  A non-zero length `\+ length(S,0)` means there are some overlapping days, so now we better go in and check for overlap between the times at which each class is offered. But what if one was using a lesser Prolog without a nice list library?
+
+We were getting more confident in our progress now, as overlapping times would not be hard to do. Here's the code for it:
+
+```prolog
+times_overlap(T1,T2) :- 
+                        nth1(1,T1,StartH1), nth1(2,T1,StartM1), 
+                        nth1(3,T1,EndH1), nth1(4,T1,EndM1), 
+                        nth1(1,T2,StartH2), nth1(2,T2,StartM2), 
+                        nth1(3,T2,EndH2), nth1(4,T2,EndM2),
+                        Start1 is StartH1*60+StartM1, End1 is EndH1*60+EndM1, Start2 is StartH2*60+StartM2, End2 is EndH2*60+EndM2, 
+                        Start1 =< End2, End1 >= Start2.
+```
+
+The times needing checking for overlap, `T1` and `T2`, each come in as a list like `[8,10,9,00]` meaning a class that meets from 8:10am to 9:00am.  The `nth1` predicates simply extract the nth (1=first) element of a list. So, we pull out the start and end hours and minutes from each time, `T1` and `T2` and check for overlap, using the very enjoyable discussion on this topic at [this page](https://stackoverflow.com/questions/325933/determine-whether-two-date-ranges-overlap).  This utility function did adapt well to Prolog: keep cranking through the list of predicates and if all true to the end, then you have yourself two overlapping times. Again, we're lucky to have the `nth1` predicates, because there would be another mini-, day-long, and potentially show stopping project: write a predicate to return the nth element of a list.
 
 
 
