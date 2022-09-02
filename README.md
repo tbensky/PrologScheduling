@@ -984,7 +984,7 @@ room(14, 201, [[t, r], [16, 40, 18, 0]]).
 
 
 
-Here you'll see that all 201 classes have been placed, and we'll need 14 rooms to do it. We can also see that the actual search "did something," since the placement of classes is not strictly sequential. The class packing is quite dense, as can be shown here (in a visiualizer written in Javascript).
+Here you'll see that all 201 classes have been placed, and we'll need 14 rooms. We can also see that the actual search "did something," since the placement of classes is not strictly sequential. The class packing is quite dense, as can be shown here (in a visiualizer written in Javascript).
 
 Rooms 1-2 looks like this, pretty densely packed, as we hoped.
 
