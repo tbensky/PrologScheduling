@@ -698,7 +698,7 @@ Here, we use CLP(FD), where FD stands for "finite domain." Finite domain here me
 
 ## Adding CLP to our code
 
-So back to our `RoomNum` problem. Suppose we know we have at most 50 rooms to place rooms in (this is all the rooms our facility has, for example). As our `plan` goal begins, we tell Prolog that `RoomNum` is an open and flexible quantity, but it must only take on values between 1 and 50 (inclusive).  Prolog+CLD means with this constraint alone, Prolog will now be happy to proceed with its solution search, almost as if `RoomNum` was given an exact values.
+So back to our `RoomNum` problem. Suppose we know we have at most 50 rooms to place rooms in (this is all the rooms our facility has, for example). As our `plan` goal begins, we tell Prolog that `RoomNum` is an open and flexible quantity, but it must only take on values between 1 and 50 (inclusive).  Prolog+CLD means with this constraint alone, Prolog will now be happy to proceed with its solution search, almost as if `RoomNum` was given an exact value.
 
 Let's modify our code and set this constrain like this:
 
