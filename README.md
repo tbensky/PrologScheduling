@@ -1,29 +1,32 @@
 # Solving a scheduling problem using Prolog using Constraint Logic Programming (CLP)
 
-This is a simple, gentle, and step-by-step example of how to use
-Prolog and constraint logic programmig (CLP) to schedule events
-(in this case college classes), into a minimum number of rooms.
+This is a simple and step-by-step example of how to use
+Prolog and constraint logic programmig (CLP) in an event scheduling application.
+
+In this case, we want to schedule events (in this case college classes), into a minimum number of rooms.
 
 ## Funny realization
 
 I've been dabbling with Prolog ever since high school. That was 30+ years
-ago. After all of this time, this repo contains (finally!) the first Prolog program I've ever written myself, that actually
-does something useful for me.  (You can see some results of my dabbling [here](https://www.codebymath.com/index.php/welcome/lesson_menu#prolog) and [here](https://arxiv.org/abs/2108.09893).)
+ago. After all of this time, this repo contains (finally!) the first Prolog program I've ever been able to write myself, that actually
+does something useful for me. 
+
+Pretty long time in coming, no? (You can see some results of my dabbling [here](https://www.codebymath.com/index.php/welcome/lesson_menu#prolog) and [here](https://arxiv.org/abs/2108.09893).)
 
 ## First a few thoughts
 
 I find Prolog to be an extremely satisfying language to use and mess around with, first
-becaming aware of it with it back in '85 when Borland came out with Turbo Prolog 1
+becoming aware of it back in '85 when Borland came out with Turbo Prolog 1
 and then 2. I owned them both. The Borland manuals were great tutorials on
 Prolog (recently bought them all again on eBay). Kudos to the
 knowledgable people at Borland who wrote them. 
 
 I look at Prolog on
 and off, sometimes with a fair amount of intensity for a few weeks,
-then I set it down again for a long spell. I've been doing this for the
-better part of 30 years! Ouch! 
+then I set it down again for a long time. I've been doing this for the
+better part of 30 years! Ouch! I guess hacking with Prolog is kind of a hobby for me.
 
-This repo actually contains the very first Prolog program I've ever written, and I am not reminiscing here about some 30 year old Borland .pro file I found on an old 5 1/4" disk.  This first program was written during the summer of 2022! Yes, it took me this long to do something useful with Prolog! It's a program that I actually use to help with ongoing scheduling
+This repo actually contains the very first Prolog program I've ever written, and I am not reminiscing here about some 30 year old Borland .pro file I found on an old 5 1/4" disk.  This first program was written during the summer of 2022! Yes, it took me that long to do something useful with Prolog! It's a program that I actually use to help with ongoing scheduling
 work I do as part of my job. 
 
 
