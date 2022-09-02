@@ -3,36 +3,23 @@
 This is a simple and step-by-step example of how to use
 Prolog and constraint logic programmig (CLP) in a scheduling application.
 
-In this case, we want to schedule many differnet college classes into a minimum number of rooms.
+In this case, we want to schedule a list of classes into some (minimal) number of rooms.
 
 ## Funny realization
 
-I've been dabbling with Prolog ever since high school, which is a time span of 30+ years!  After all of this time, I've finally written my first real Prolog program!
+I've been dabbling with Prolog ever since high school, which was 30+ years ago.  Hacking Prolog is kind of a hobby for me, but in all
+of this time, I've always had a hard time getting it to do anything actually useful. Until now! 
 
-The program actually does something useful for me: it helps me with ongoing scheduling work I do as part of my job. 
+I'm happy to say, that after all of this time, I've finally written my first real Prolog program!
 
-Pretty long time in coming, no? (You can see some results of my dabbling [here](https://www.codebymath.com/index.php/welcome/lesson_menu#prolog) and [here](https://arxiv.org/abs/2108.09893).)
+The program actually does something useful too: it helps me with ongoing scheduling work I do as part of my job. 
 
-## First a few thoughts
+Pretty long time in coming, no? I've done a few things with Prolog, as you can see [here](https://www.codebymath.com/index.php/welcome/lesson_menu#prolog), [here](https://arxiv.org/abs/2108.09893), and [here](https://github.com/tbensky/physics_prolog). The program is this repo is the first "real" program though.
 
-I find Prolog to be an extremely fun language to use and hack around with, first
-becoming aware of it back in '85 when Borland came out with Turbo Prolog 1
-and then 2. I owned them both. The Borland manuals were great tutorials on
-Prolog (recently bought them all again on eBay). Kudos to the
-knowledgable people at Borland who wrote them. 
+## Perception of Prolog
 
-I look at Prolog on
-and off, sometimes with a fair amount of intensity for a few weeks,
-then I set it down again for a long time. I've been doing this for the
-better part of 30 years! Ouch! I guess hacking with Prolog is kind of a hobby for me.
-
-Whenever I'm able to get Prolog to do something that I need, or have
-some "ah ha that's how that works" moment with it, I find it very
-rewarding. It always feels like I just learned something.  Prolog
-however, has an odd and erroneous reputation though (which is also how I used
-to think about it).
-
-### Perception of Prolog
+Prolog has an odd and erroneous reputation out there (which is also how I used
+to think about it). It goes like this.
 
 I've read many Stackoverflow questions where someone will say
 something like "I need to automate some scheduling" or "I want to add
