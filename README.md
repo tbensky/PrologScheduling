@@ -7,9 +7,9 @@ In this case, we want to schedule many differnet college classes into a minimum 
 
 ## Funny realization
 
-I've been dabbling with Prolog ever since high school. That is a time span 30+ years!  After all of this time, I've finally written my first real Prolog program!
+I've been dabbling with Prolog ever since high school, which is a time span of 30+ years!  After all of this time, I've finally written my first real Prolog program!
 
-It's a program that actually does something useful for me: it helps me with ongoing scheduling work I do as part of my job. 
+And, it's a program that actually does something useful for me: it helps me with ongoing scheduling work I do as part of my job. 
 
 Pretty long time in coming, no? (You can see some results of my dabbling [here](https://www.codebymath.com/index.php/welcome/lesson_menu#prolog) and [here](https://arxiv.org/abs/2108.09893).)
 
