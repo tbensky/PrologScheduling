@@ -1086,7 +1086,9 @@ More scheduling constraints are possible. Some we haven't explored yet:
 
 * Linking the offerings times of 3 classes. For example, a lecture class that also have labs associated with it.  We might want the labs occur on off-days for the lecture.
 
-We're sure there are scheduling constraint out there.
+* Avoiding some offering times for particular classes.
+
+We're sure there are plenty of scheduling constraints out there.
 
 
 
