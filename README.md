@@ -9,7 +9,10 @@ In this case, we want to schedule many differnet college classes into a minimum 
 
 I've been dabbling with Prolog ever since high school. That was 30+ years
 ago. After all of this time, this repo contains (finally!) the first Prolog program I've ever been able to write myself, that actually
-does something useful for me. 
+does something useful for me. I am not reminiscing here about some 30 year old Borland .pro file I found on an old 5 1/4" disk.  
+
+This first program was written during the summer of 2022! Yes, it took me that long to do something useful with Prolog! It's a program that I actually use to help with ongoing scheduling
+work I do as part of my job. 
 
 Pretty long time in coming, no? (You can see some results of my dabbling [here](https://www.codebymath.com/index.php/welcome/lesson_menu#prolog) and [here](https://arxiv.org/abs/2108.09893).)
 
@@ -25,9 +28,6 @@ I look at Prolog on
 and off, sometimes with a fair amount of intensity for a few weeks,
 then I set it down again for a long time. I've been doing this for the
 better part of 30 years! Ouch! I guess hacking with Prolog is kind of a hobby for me.
-
-This repo actually contains the very first Prolog program I've ever written, and I am not reminiscing here about some 30 year old Borland .pro file I found on an old 5 1/4" disk.  This first program was written during the summer of 2022! Yes, it took me that long to do something useful with Prolog! It's a program that I actually use to help with ongoing scheduling
-work I do as part of my job. 
 
 
 Whenever I'm able to get Prolog to do something that I need, or have
