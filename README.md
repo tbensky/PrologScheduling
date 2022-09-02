@@ -1,9 +1,9 @@
 # Solving a scheduling problem using Prolog using Constraint Logic Programming (CLP)
 
 This is a simple and step-by-step example of how to use
-Prolog and constraint logic programmig (CLP) in an event scheduling application.
+Prolog and constraint logic programmig (CLP) in scheduling application.
 
-In this case, we want to schedule events (in this case college classes), into a minimum number of rooms.
+In this case, we want to schedule many differnet college classes into a minimum number of rooms.
 
 ## Funny realization
 
