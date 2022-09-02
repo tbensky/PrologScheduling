@@ -646,7 +646,7 @@ It appears as if Prolog was unable to instantiate any concrete room numbers, but
 
 # Constraint Logic Programming (CLP)
 
-After watching the [Power of Prolog](https://www.metalevel.at/prolog) videos, we're convinced that Prolog + CLP is what Prolog should have been all along. The addition of CLP is in all in "modern" (or today's) Prologs. None of this appeared in the books and implementations of the '80 and '90s. Interestingly, it is built into [Gnu-Prolog](http://www.gprolog.org), and has been for some time.  Let's see how CLP would help us here.
+After watching the [Power of Prolog](https://www.metalevel.at/prolog) videos, we're convinced that Prolog + CLP is what Prolog should have been all along. The addition of CLP is in all in "modern" (or today's) Prologs. None of this appeared in the books and implementations of the '80 and '90s. Interestingly, CLP is built into [Gnu-Prolog](http://www.gprolog.org), and has been for some time.  Let's see how CLP would help us here.
 
 ## Shortcomings of our code
 
