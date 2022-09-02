@@ -1026,7 +1026,7 @@ plan :-
         listing(room).
 ```
 
-We'll get the same result (14 rooms), but again, maybe `indomain` is sufficient for our particular data set.
+We'll get the same result (14 rooms), but again, maybe `indomain` is sufficient for our particular data set.  As we continue our work and experiments with CLP, we'll keep this all in mind.
 
 
 # What now?
