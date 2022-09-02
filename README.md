@@ -51,7 +51,7 @@ The power of Prolog as we see it is twofold:
 easier than with a procedural language. Both are just parts of
 the actual Prolog code. 
 
-I usually find specifying the data for a problem very enjoyable. I usually do this first, and it feels like I'm making fast progress in solving my problem.  "Prolog is so fun and flexible" I often think. The pattern however, which will drive the search, feels much more difficult, and progress is usually very very slow.
+I usually find specifying the data for a problem very enjoyable. I usually do this first, and it feels like I'm making fast progress in solving my problem.  "Prolog is so fun and flexible" I often think. The pattern however, which will drive the search, feels much more difficult, and progress is usually very very slow. Even haltingly so.
 
 I think with Prolog, people get hung up on stating the pattern they are looking for in their data. They 
 kind of expect Prolog to just "know" such things. 
@@ -69,6 +69,8 @@ As [Triska](https://www.metalevel.at/prolog) pointed out, if you've wandered ove
 have a difficult problem to solve, likely with a large phase-space to explore.  You're looking at Prolog because you are already stuck on what to do. Perhaps you don't
  see an easy route in a procedural language.  Your feeling for problems like these is that if a computer does find a solution for you, it'll
  kind of feel like "magic."
+
+ So next, maybe you start putting some of your data into some Prolog code, but Prolog doesn't immediately make it obvious how you'll solve your problem.  Maybe you've already forgotton how difficult your problem is in the first place! 
 
 Prolog, at minimum, makes searching large
 phase-spaces at least plausible, and the implementation may even be easier on you. Finding solutions in large search spaces is kind of magical.
