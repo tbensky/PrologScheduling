@@ -66,15 +66,13 @@ termination condition, some data structure that models
 "rooms of classes," etc. If you want something that may understand scheduing already, look at something like [MiniZinc](https://www.minizinc.org).
 
 As [Triska](https://www.metalevel.at/prolog) pointed out, if you've wandered over to Prolog, it's probably because you know you
-have a difficult problem to solve, likely with a large phase-space to explore.  You're looking at Prolog because you are already stuck on what to do.  So, you start putting some of your data into some Prolog code, but Prolog doesn't immediately make it obvious how you'll solve your problem.  Maybe you've already forgotton how difficult your problem is in the first place, and so the frustration *with Prolog* sets in.
-
-Prolog, at minimum, makes searching large
-phase-spaces at least plausible, and the implementation may even be easier on you. Finding solutions in large search spaces is kind of magical.
+have a difficult problem to solve, likely with a large phase-space to explore.  You're looking at Prolog because you are already stuck on what to do.  So, you start putting some of your data into Prolog code, but Prolog doesn't immediately make it obvious what to do with this data. Maybe you've already forgotton how difficult your problem is in the first place, and so the frustration *with Prolog* sets in.
 
 Likely in a procedural
 language, all you can think of is `for(i=0;i<1000000000;i++)`, which you already know won't really work. Prolog
 will also be confronted with the "1000000000," but knows how to prune it down into something more tractable, if you 
-present your problem to it properly.
+present your problem to it properly.  Prolog, at minimum, makes searching large
+phase-spaces at least plausible, and the implementation may even be easier on you. Finding solutions in large search spaces is kind of magical.
 
 
 # Prolog and Scheduling: Getting Started
