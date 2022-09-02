@@ -166,7 +166,7 @@ Believe it or not, as complicated as "computer automated scheduling" may sound, 
 
 As a scheduling plan goes, we feel like just which time to choose for a class, within a timeslot group, should be left up to Prolog. Thus, no more specifics on when to place a class will be given.  Many might think trying a random time within a group of time slots is the way to go.  Maybe it is, maybe it isn't. It's not here. (But a random number-based algorithm will place classes in rooms for you, but it has a funny convergence and completion problem.)  Let's just let Prolog grapple with this parameter.
 
-(Note: Genetic algorithms, heavily based on random numbers, can also be used for this. But we had trouble coming up with a way that would allow the algorithm full freedom to cross over and mutate, while also avoiding placing classes on top of one another. Does anyone have any hints in this regard?)
+(Note: Genetic algorithms, heavily based on random numbers, can also be used for this. But we had trouble coming up with a way that would allow the algorithm full freedom to crossover and mutate, while also avoiding placing classes on top of one another. Does anyone have any hints in this regard?)
 
 
 
@@ -241,7 +241,9 @@ For us, this is precisely where we'd usually bail out and abandon our entire Pro
 
 1. A project in itself, to solve in Prolog.
 
-1. Not impressive or sexy, when we finally figure out how to grind them out in Prolog (they are not AI-ish, not Prology, nothing special). As a case in point, look the Quicksort implemented in Prolog. All we can say is "why," and when done, just post it here (https://www.reddit.com/r/DiWHY/) and find something else to do. Yuck.  Funny though, this is how all books on Prolog in the 80s and 90s were written.  "Let's see if we can implement QuickSort in Prolog." We read all of those books and they were a real turn-off.  This was also the time period that preceeded to the AI-winter. If we see another exercise on seeing if element `X` is in list `Y`.....
+1. Not impressive or sexy, when we finally figure out how to grind them out in Prolog (they are not AI-ish, not Prology, nothing special). 
+
+(As a case in point, look the Quicksort implemented in Prolog. All we can say is "why," and when done, just post it here (https://www.reddit.com/r/DiWHY/) and find something else to do. Yuck.  Funny though, this is how all books on Prolog in the 80s and 90s were written.  "Let's see if we can implement QuickSort in Prolog." We read all of those books and they were a real turn-off.  This was also the time period that preceeded to the AI-winter. If we see another exercise on seeing if element `X` is in list `Y`.....)
 
 More than once, we've wished Prolog would have some kind of embedded Python within it, that could easily take and return Prolog's native data types for some quick processing. You know, allow us to implement some small task, quickly and easily.
 
