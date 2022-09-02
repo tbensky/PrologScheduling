@@ -144,6 +144,8 @@ time_slot(1,[[t,r],[20,10,21,30]]).
 time_slot(1,[[t,r],[20,40,22,00]]).
 ```
 
+As mentioned above, see how easy it is to put this data into Prolog?
+
 ### The classes
 Here is a list of how classes, showing how they are specified. These are the classes we need to place in rooms.
 
@@ -165,6 +167,7 @@ class(13,[geol-1301-02],0).
 
 So we have a few classes (numbered 1-13), with some name, needing to be placed at some time that is consistent with a required time slot group. Here, `geol-1200-01` needs to be placed on Tues/Thurs according to a time in the group 1 time slots.  Class #6, or `geol-1206-1` shall be placed as a group 0 class.
 
+Again, this data went in easily too.
 
 ### Hmmm....scheduling these classes
 
