@@ -997,11 +997,13 @@ Starting at about Room 9, the density drops since the T/TH classes become all th
 
 # What about minimizing the rooms used?
 
-For the 201 classes used in this run, we are pleased with the room packing, and indeed 14 rooms seems reasonable.  A lingering question: Where in the code did we tell Prolog to minimize the rooms it should use?
+For the 201 classes used in this run, we are pleased with the room packing, and indeed 14 rooms seems reasonable.  A lingering question: Where in the code did we tell Prolog to *minimize* the rooms it can use?
 
-We didn't, because it seems to be doing this already, or our scheduling problem isn't as complicated as it seems.  When we look at the rigid structure of our classes, with the strict MWF or T/TH offerings, maybe it's not hard to pack classes in. (?)  The results shown above do not show any wasteful room usage. There are more time patterns (MW and one day/week classes) which aren't used as much, but may complicate things.
+We didn't, because it seems to be doing this already. We think our scheduling problem isn't as complicated as it may seem.  When we look at the rigid structure of our classes, with the strict MWF or T/TH offerings, maybe it's simply not hard to pack classes into rooms?  The results shown above do not show any wasteful room usage. There are more time patterns (MW and one day/week classes) which aren't used as much, but may complicate things.
 
-Specifying the desire to minimize `RoomNum` (we think) is in allowing Prolog to choose a room number value for `RoomNum`. The `indomain` predicate incrementally goes through the domain of `RoomNum`. There is another way of instantiating `RoomNum` using the `labeling` predicate like this:
+Formally telling Prolog to minimize `RoomNum` (we think) is in where Prolog is told to choose a room number value for `RoomNum`. As we saw, the `indomain` predicate incrementally goes through the domain of `RoomNum`, which may be enough here. (I.e. When a room is full, start filling another room.) 
+
+There is another way of instantiating `RoomNum` using the `labeling` predicate like this:
 
 ```prolog
 labeling([min(RoomNum)],[RoomNum]))
@@ -1024,7 +1026,7 @@ plan :-
         listing(room).
 ```
 
-We get the same result (14 rooms), but again, maybe `indomain` is sufficient for our particular data set.
+We'll get the same result (14 rooms), but again, maybe `indomain` is sufficient for our particular data set.
 
 
 # What now?
