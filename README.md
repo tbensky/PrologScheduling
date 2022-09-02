@@ -654,7 +654,7 @@ With our code at the moment, Prolog constrained its class placements to a single
 
 The room number for a class first appears in the line `fits_in_room(RoomNum,DaysTimes)`, where we want to see if a given day/time chosen for a would-be class to place onflicts with what's already placed in room `RoomNum`. We're kind of lucky our code even runs at all, because we never set `RoomNum` to any value at all! 
 
-So Prolog assumes it can take on any value, and assigns it the `_` value. It is kind of telling us: pick any room you want, and here are 20 classes you can place into it using this arrangement.  We'd have to somehow coax Prolog into making up another room, while not ignoring these already placed classes. Alos, the conflict begins: how do we know when to start using another room? This is what we want the optimizer (i.e. Prolog) to do for us.
+So Prolog assumes it can take on any value, and assigns it the `_` value. It is kind of telling us: pick any room you want, and here are 20 classes you can place into it using this arrangement.  We'd have to somehow coax Prolog into making up another room, while not ignoring these already placed classes. Alos, the conflict begins: how do we know when to start using another room? This is what we want the optimizer (i.e. Prolog) to do for us, based on its assessment of how the overall search is going.
 
 What about assigning `RoomNum` to some value manually?  Try editing the `plan` goal to read
 
