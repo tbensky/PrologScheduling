@@ -55,12 +55,11 @@ also give it). It returns
 
 The power of Prolog as we see it is twofold:
 
-1. You don't have to go writing the search algorithms yourself. Prolog's are all professional-grade, so you can consider tackling "large" search spaces. 
+1. You don't have to go writing the search algorithms yourself. Prolog's are all professional-grade, so you can consider tackling "large" search spaces with Prolog.
 
 2. Prolog makes specifying your data and pattern(s) very natural, maybe even
 easier than with a procedural language. Both are just parts of
-the actual Prolog code. I find specifying the data usually very enjoyable, and it feels like you are making fast progress
-while inputting the data. The pattern, which will drive the search, feel much more difficult and progress is usually very slow.
+the actual Prolog code. I find specifying the data for a problem usually very enjoyable, and it feels like I'm making fast progress in solving my problem.  The pattern, which will drive the search, feels much more difficult, and progress is usually very slow.
 
 I think with Prolog, people get hung up on stating the pattern they are looking for in their data. They 
 kind of expect Prolog to just "know" such things. 
@@ -71,7 +70,7 @@ where you hit return and X will be a list of rooms and what
 classes can be placed into it.  You still have to code up the Prolog
 that ensures classes aren't placed on top of each other, some kind of
 termination condition, some data structure that even models
-a "room full of classes," etc.
+a "room full of classes," etc. If you want something that may understand scheduing already, look at something like [MiniZinc](https://www.minizinc.org).
 
 As [Triska](https://www.metalevel.at/prolog) pointed out, if you've wandered over to Prolog, it's probably because you know you
 have a difficult problem to solve, likely with a large phase-space to explore.
