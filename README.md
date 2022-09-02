@@ -728,24 +728,24 @@ You can test this as follows. Load up SWI-Prolog and type the following:
 
 ```prolog
 ?- use_module(library(clpfd)).
-?- RoomNum #> 0, RoomNum #< 50.
+?- RoomNum #> 1, RoomNum #< 50.
 ```
 
 The output will be
 
 ```prolog
-RoomNum in 0..50.
+RoomNum in 1..50.
 ```
 
 But if you type this line
 
 ```prolog
-?- RoomNum #>= 0, RoomNum #=< 50, indomain(RoomNum).
+?- RoomNum #>= 1, RoomNum #=< 50, indomain(RoomNum).
 ```
 
-You'll see indeed Prolog will begin iterating through the bounds for `RoomNum`. You can also try ` RoomNum #>= 0, RoomNum #=< 50, label([RoomNum]).` where `label` and `labeling` are predicates you can read about [here](https://www.swi-prolog.org/pldoc/man?section=clpfd).
+You'll see indeed Prolog will begin iterating through the bounds for `RoomNum`. You can also try ` RoomNum #>= 1, RoomNum #=< 50, label([RoomNum]).` where `label` and `labeling` are predicates you can read about [here](https://www.swi-prolog.org/pldoc/man?section=clpfd).
 
-So all we've done by setting the constraint, is to internally let Prolog know that `RoomNum` has to be between 0 and 50.
+So all we've done by setting the constraint, is to internally let Prolog know that `RoomNum` has to be between 1 and 50. It's happy to proceed with its search, with bit of information.
 So modifying our code to:
 
 
