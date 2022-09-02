@@ -995,9 +995,9 @@ Starting at about Room 9, the density drops since the T/TH classes become all th
 ![Rooms13-14](https://github.com/tbensky/PrologScheduling/blob/master/Results/rooms13-14.png)
 
 
-# What about minimizing the rooms used
+# What about minimizing the rooms used?
 
-For the 201 classes used in this run, we are pleased with the room packing, and indeed 14 rooms seems reasonable.  Where in the code did we tell Prolog to minimize the rooms it should use?
+For the 201 classes used in this run, we are pleased with the room packing, and indeed 14 rooms seems reasonable.  A lingering question: Where in the code did we tell Prolog to minimize the rooms it should use?
 
 We didn't, because it seems to be doing this already, or our scheduling problem isn't as complicated as it seems.  When we look at the rigid structure of our classes, with the strict MWF or T/TH offerings, maybe it's not hard to pack classes in. (?)  The results shown above do not show any wasteful room usage. There are more time patterns (MW and one day/week classes) which aren't used as much, but may complicate things.
 
