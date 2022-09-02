@@ -12,14 +12,14 @@ of this time, I've always had a hard time getting it to do anything actually use
 
 I'm happy to say, that after all of this time, I've finally written my first real Prolog program!
 
-The program actually does something useful too: it helps me with ongoing scheduling work I do as part of my job. 
+The program is useful too: it helps me with ongoing scheduling work I do as part of my job. 
 
 Pretty long time in coming, no? I've done a few things with Prolog, as you can see [here](https://www.codebymath.com/index.php/welcome/lesson_menu#prolog), [here](https://arxiv.org/abs/2108.09893), and [here](https://github.com/tbensky/physics_prolog). The program is this repo is the first "real" program though.
 
 ## Perception of Prolog
 
 Prolog has an odd and erroneous reputation out there (which is also how I used
-to think about it). It goes like this.
+to think about it). It usually goes like this.
 
 I've read many Stackoverflow questions where someone will say
 something like "I need to automate some scheduling" or "I want to add
@@ -33,11 +33,14 @@ thought like "What do I do now? I thought Prolog is supposed to know
 how to handle this."
 
 This is not the case. Prolog (just like your favorite procedural language) may
-be able to handle such things, but you still have to tell it how.  All told,
-Prolog is a just search language. Its core contains all of the best practices
+be able to handle such things, *but you still have to tell it how.*  All told,
+Prolog is a search language. Its core looks at all of your unknowns and tries
+to "instantiate" them with values that are consistent with rules and data
+you've told it about.
+
+Internally, it contains all of the best "search" practices
 for matching a pattern (you give it), to some data (that you
-also give it). It returns
-"true" if it finds a match between the two.  It is generalized search language,
+also give it). It returns "true" if it finds a match between the two.  It is generalized search language,
  that uses backtracking for search efficiency.  
 
 The power of Prolog as we see it is twofold:
@@ -46,27 +49,29 @@ The power of Prolog as we see it is twofold:
 
 2. Prolog makes specifying your data and pattern(s) very natural, maybe even
 easier than with a procedural language. Both are just parts of
-the actual Prolog code. I usually find specifying the data for a problem very enjoyable, and it feels like I'm making fast progress in solving my problem.  "Prolog is so fun and flexible" I often think. The pattern however, which will drive the search, feels much more difficult, and progress is usually very slow.
+the actual Prolog code. 
+
+I usually find specifying the data for a problem very enjoyable. I usually do this first, and it feels like I'm making fast progress in solving my problem.  "Prolog is so fun and flexible" I often think. The pattern however, which will drive the search, feels much more difficult, and progress is usually very very slow.
 
 I think with Prolog, people get hung up on stating the pattern they are looking for in their data. They 
 kind of expect Prolog to just "know" such things. 
 
-In scheduling for
-example, there is no built in magic of Prolog like `make_a_schedule(X),` 
+In scheduling for example, there is no built in magic of Prolog like `make_a_schedule(X),` 
 where you hit return and X will be a list of rooms and what
-classes can be placed into it.  You still have to code up the Prolog
+classes can be placed into each.  
+
+You still have to code up the Prolog
 that ensures classes aren't placed on top of each other, some kind of
 termination condition, some data structure that models
 "rooms of classes," etc. If you want something that may understand scheduing already, look at something like [MiniZinc](https://www.minizinc.org).
 
 As [Triska](https://www.metalevel.at/prolog) pointed out, if you've wandered over to Prolog, it's probably because you know you
-have a difficult problem to solve, likely with a large phase-space to explore.
- You're looking at Prolog because even at the start, you are already stuck on what to do. Perhaps you don't
+have a difficult problem to solve, likely with a large phase-space to explore.  You're looking at Prolog because you are already stuck on what to do. Perhaps you don't
  see an easy route in a procedural language.  Your feeling for problems like these is that if a computer does find a solution for you, it'll
  kind of feel like "magic."
 
 Prolog, at minimum, makes searching large
-phase-spaces at least plausible, and the implementation may even be easier on you. 
+phase-spaces at least plausible, and the implementation may even be easier on you. Finding solutions in large search spaces is kind of magical.
 
 Likely in your procedural
 language, all you can think of is `for(i=0;i<1000000000;i++)`, which you already know won't really work. Prolog
