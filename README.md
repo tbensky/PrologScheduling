@@ -684,7 +684,7 @@ plan :-
         listing(room).
 ```
 
-You'll see that Prolog now numbers the room, but still contraints its room usage to just a single room.  In the next section, we'll see that instead of defining a room numnber, we can use the CLP add-ons to Prolog to *constrain* (that is, set an acceptable range) for values for `RoomNum`, which will help out a lot.
+You'll see that Prolog now numbers the room, but still contraints its room usage to just a single room.  In the next section, we'll see that instead of defining a room numnber, we can use the CLP add-ons to Prolog to *constrain* (that is, set an acceptable range) for values for `RoomNum`, which will help out a lot, without setting any particular value for it.
 
 
 
