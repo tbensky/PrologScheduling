@@ -186,7 +186,7 @@ By the way, the code-blocks above are actual Prolog code. See how easy "the data
 
  # Thinking it through
 
- Here's where the Stackoverflow questions on Prolog alluded to above tend to break down: Given the data above, doesn't Prolog somehow just know what to do? No it does not.  At minimum some "cost" function needs to be specified so any algorithm knows how it's doing (see [Lex/Norvig interview](https://www.youtube.com/watch?v=_VPxEcT_Adc). In fact cost functions may even become more of the thrust of AI research.  Think: How would Prolog know a cost function for your hard problem? Let's think it through. 
+ Here's where the Stackoverflow questions on Prolog alluded to above tend to break down: Given the data above, doesn't Prolog somehow just know what to do? No it does not.  At minimum some "cost" function needs to be specified so any algorithm knows how it's doing (see [Lex/Norvig interview](https://www.youtube.com/watch?v=_VPxEcT_Adc)). In fact cost functions may even become more of the thrust of AI research.  Think: How would Prolog know a cost function for your hard problem? Let's think it through. 
 
 Given the data, what would we envision of a successful scheduling algorithm? Here are some key goals:
 
