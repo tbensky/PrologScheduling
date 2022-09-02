@@ -74,16 +74,17 @@ a "room full of classes," etc. If you want something that may understand schedui
 
 As [Triska](https://www.metalevel.at/prolog) pointed out, if you've wandered over to Prolog, it's probably because you know you
 have a difficult problem to solve, likely with a large phase-space to explore.
- You're looking at Prolog because even at the start, you are already stuck on what to do. You maybe don't
- see an easy route in a procedural language.  It you write some code that will find a solution for you, it'll
+ You're looking at Prolog because even at the start, you are already stuck on what to do. Perhaps you don't
+ see an easy route in a procedural language.  Your feeling for problems like these is that if a computer does find a solution for you, it'll
  kind of feel like "magic."
 
 Prolog, at minimum, makes searching large
-phase-spaces at least plausible, and the implementation may eveb be easier on you. 
+phase-spaces at least plausible, and the implementation may even be easier on you. 
 
 Likely in your procedural
 language, all you can think of is `for(i=0;i<1000000000;i++)`, which you already know won't really work. Prolog
-will also be confronted with the "1000000000," but knows how to prune it down into something more tractable.
+will also be confronted with the "1000000000," but knows how to prune it down into something more tractable, if you 
+present your problem to it properly.
 
 
 # Prolog and Scheduling: Getting Started
