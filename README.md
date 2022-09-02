@@ -169,6 +169,12 @@ So we have a few classes (numbered 1-13), with some name, needing to be placed a
 
 Again, this data went in easily too.
 
+### We're ready
+
+Believe it or not, as complicated as "computer automated scheduling" may sound, that's it for our application.  We tell Prolog about valid time slots, and classes needing to be placed. From this alone, we want Prolog to place the `M` classes (13 here), into `N` rooms, where `N` is a minimum. For us, this is run for `M=200+` classes, simply by extending the `class()` data set.  We also have about 6 or 7 actual time slot groups. 
+
+By the way, the code-blocks above are actual Prolog code. See how easy "the data" can be?
+
 ### Hmmm....scheduling these classes
 
 As a scheduling plan goes, we feel like just which time to choose for a class, within a timeslot group, should be left up to Prolog. Thus, no more specifics on when to place a class will be given.  Many might think trying a random time within a group of time slots is the way to go.  Maybe it is, maybe it isn't. It's not here. (But a random number-based algorithm will place classes in rooms for you, but it has a funny convergence and completion problem.)  Let's just let Prolog grapple with this parameter.
@@ -176,11 +182,7 @@ As a scheduling plan goes, we feel like just which time to choose for a class, w
 (Note: Genetic algorithms, heavily based on random numbers, can also be used for this. But we had trouble coming up with a way that would allow the algorithm full freedom to cross over and mutate, while also avoiding placing classes on top of one another. Does anyone have any hints in this regard?)
 
 
-#### We're ready
 
-Believe it or not, as complicated as "computer automated scheduling" may sound, that's it for our application.  We tell Prolog about valid time slots, and classes needing to be placed. From this alone, we want Prolog to place the `M` classes (13 here), into `N` rooms, where `N` is a minimum.  In practice, this is run for `M=200+` classes, simply by extending the `class()` data set.  We also have about 6 or 7 actual time slot groups. 
-
-By the way, the code-blocks above are actual Prolog code. See how easy "the data" can be?
 
 
  # Thinking it through
