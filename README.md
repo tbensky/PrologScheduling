@@ -29,7 +29,7 @@ They'll go on to say "I heard Prolog is really good at this,"
 and will post a few lines of `class(intro_to_coding,T,1:30-3:30)` for a scheduling problem or
 `is_verb(walk)` for an NLP problem. They'll then throw their hands in the air with a comment
 thought like "What do I do now? I thought Prolog is supposed to know
-how to handle this."  You also know if a computer could spit out an answer for you, it would feel kind of like magic.
+how to handle this." 
 
 This is not the case. Prolog (just like your favorite procedural language) may
 be able to handle such things, *but you still have to tell it how.*  All told,
@@ -70,7 +70,7 @@ Likely in a procedural
 language, all you can think of is `for(i=0;i<1000000000;i++)`, which you already know won't really work. Prolog
 will also be confronted with the "1000000000," but knows how to prune it down into something more tractable, if you 
 present your problem to it properly.  Prolog, at minimum, makes searching large
-phase-spaces at least plausible, and the implementation may even be easier on you. Finding solutions in large search spaces is kind of magical.
+phase-spaces at least plausible, and the implementation may even be easier on you.
 
 
 # Prolog and Scheduling: Getting Started
