@@ -1,24 +1,23 @@
 # Solving a scheduling problem using Prolog using Constraint Logic Programming (CLP)
 
 This is a simple and step-by-step example of how to use
-Prolog and constraint logic programmig (CLP) in a scheduling application.
-
-In this case, we want to schedule a list of classes into some (minimal) number of rooms.
+Prolog and constraint logic programmig (CLP) in a classroom scheduling application. In particular, 
+we want to schedule a list of classes into some (minimal) number of rooms.
 
 ## Funny realization
 
-I've been dabbling with Prolog ever since high school, which was 30+ years ago.  Hacking Prolog is kind of a hobby for me, but in all
+I've been dabbling with Prolog ever since high school, which was 30+ years ago. (Ouch!) Hacking Prolog is kind of a hobby for me, but in all
 of this time, I've always had a hard time getting it to do anything actually useful. Until now! 
 
 I'm happy to say, that after all of this time, I've finally written my first real Prolog program!
 
-The program is useful too: it helps me with ongoing scheduling work I do as part of my job. 
+The program actually does something too: it helps me with scheduling work I do as part of my job. 
 
-Pretty long time in coming, no? I've done a few things with Prolog, as you can see [here](https://www.codebymath.com/index.php/welcome/lesson_menu#prolog), [here](https://arxiv.org/abs/2108.09893), and [here](https://github.com/tbensky/physics_prolog). The program is this repo is the first "real" program though.
+Pretty long time in coming, no? I've done a few things with Prolog, as you can see [here (teaching related)](https://www.codebymath.com/index.php/welcome/lesson_menu#prolog), [here](https://arxiv.org/abs/2108.09893), and [here](https://github.com/tbensky/physics_prolog). The program is this repo is the first "real" program though.
 
 ## Perception of Prolog
 
-Prolog has an odd and erroneous reputation out there (which is also how I used
+Prolog has an erroneous reputation out there (which is also how I used
 to think about it). It usually goes like this.
 
 Someone will post a question to Stackoverflow that will say
