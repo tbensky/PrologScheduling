@@ -35,12 +35,11 @@ This is not the case. Prolog (just like your favorite procedural language) may
 be able to handle such things, *but you still have to tell it how.*  All told,
 Prolog is a search language. Its core looks at all of your unknowns and tries
 to "instantiate" them with values that are consistent with rules and data
-you've told it about.
+you've presented it with.
 
 Internally, it contains all of the best "search" practices
-for matching a pattern (you give it), to some data (that you
-also give it). It returns "true" if it finds a match between the two.  It is generalized search language,
- that uses backtracking for search efficiency.  
+for matching a rule you need to satisfy about your unknowns, to some data. It returns "true" if it finds a match between the two, and shows you what
+values of your unknowns make it all work.   
 
 The power of Prolog as we see it is twofold:
 
