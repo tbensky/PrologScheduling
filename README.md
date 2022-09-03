@@ -49,9 +49,9 @@ The power of Prolog as we see it is twofold:
 easier than with a procedural language. Both are just parts of
 the actual Prolog code. 
 
-I usually find specifying the data for a problem very enjoyable. I usually do this first, and it feels like I'm making fast progress in solving my problem.  "Prolog is so fun and flexible" I often think. The pattern however, which will drive the search, feels much more difficult, and progress is usually very very slow. Even haltingly so.
+I usually find coding up the data for a problem very enjoyable. I usually do this first, and it feels like I'm making fast progress in solving my problem.  "Prolog is so fun and flexible" I often think. The rule I need to satisfy however, which will drive the search, always feels much more difficult, and more progress is usually very very slow. Even haltingly so.
 
-I think with Prolog, people get hung up on stating the pattern they are looking for in their data. In other words, hung up on driving the search.  They 
+I think with Prolog, people get hung up on stating the rule they wish to satisfy from their data. In other words, they (myself included) all get hung up on driving Prolog's search.  They 
 kind of expect Prolog to just "know" such things. 
 
 In scheduling for example, there is no built in magic of Prolog like `make_a_schedule(X),` 
