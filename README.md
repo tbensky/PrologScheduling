@@ -29,7 +29,7 @@ They'll go on to say "I heard Prolog is really good at this,"
 and will post a few lines of `class(intro_to_coding,T,1:30-3:30)` for a scheduling problem or
 `is_verb(walk)` for an NLP problem. They'll then throw their hands in the air with a comment
 thought like "What do I do now? I thought Prolog is supposed to know
-how to handle this."
+how to handle this."  You also know if a computer could spit out an answer for you, it would feel kind of like magic.
 
 This is not the case. Prolog (just like your favorite procedural language) may
 be able to handle such things, *but you still have to tell it how.*  All told,
