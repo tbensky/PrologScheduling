@@ -1,3 +1,8 @@
+%
+% Room scheduling
+
+%
+
 :- use_module(library(clpfd)).
 
 time_slot(0,[[m,w,f],[7,10,8,00]]).

@@ -6,7 +6,7 @@ we want to schedule a list of classes into some (minimal) number of rooms.
 
 ## Funny realization
 
-I've been dabbling with Prolog ever since high school, which was 30+ years ago. (Ouch!) Hacking Prolog is kind of a hobby for me, but in all
+I've been dabbling with Prolog ever since high school, which was 30+ years ago. (Ouch! [Not alone though.](https://news.ycombinator.com/item?id=32690892)) Hacking Prolog is kind of a hobby for me, but in all
 of this time, I've always had a hard time getting it to do anything actually useful. Until now! 
 
 I'm happy to say, that after all of this time, I've finally written my first real Prolog program!
