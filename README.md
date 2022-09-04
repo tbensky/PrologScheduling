@@ -13,8 +13,6 @@ I'm happy to say, that after all of this time, I've finally written my first rea
 
 The program actually does something too: it helps me with scheduling work I do as part of my job. 
 
-Pretty long time in coming, no? I've done a few things with Prolog, as you can see [here (teaching related)](https://www.codebymath.com/index.php/welcome/lesson_menu#prolog), [here](https://arxiv.org/abs/2108.09893), and [here](https://github.com/tbensky/physics_prolog). The program is this repo is the first "real" program though.
-
 ## Perception of Prolog
 
 Prolog has an erroneous reputation out there (which is also how I used
