@@ -288,8 +288,7 @@ pr :- writeln("]").
 
 plan :-
         RoomNum #>= 1, RoomNum #=< 50,
-        %(must_place_in(ClassNum,RoomNum)  ; indomain(RoomNum)),
-        (must_place_in(ClassNum,RoomNum)  ; labeling([min(RoomNum)],[RoomNum])),
+        indomain(RoomNum),
         class(ClassNum,_,TimeSlotGroup),
         time_slot(TimeSlotGroup,DaysTimes),
         fits_in_room(RoomNum,DaysTimes),
