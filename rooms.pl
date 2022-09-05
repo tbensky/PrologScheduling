@@ -281,8 +281,9 @@ no_overlap(Proposed,[PlacedHead|PlacedTail]) :- \+ pair_overlap(Proposed,PlacedH
 
 fits_in_room(RoomNum,ProposedDaysTimes) :- findall(X,room(RoomNum,_,X),PlacedSoFar), no_overlap(ProposedDaysTimes,PlacedSoFar). 
 
-pr :- room(A,B,[C|D]), class(B,Class,_), format('"~w","~w","~w","~w"~n',[A,Class,C,D]), fail.
-pr.
+pr :- write("["), room(A,B,[C|D]), class(B,Class,_), 
+        flatten(D,DStr), format('{"room_num":"~w","class_name":"~w","days":"~w","times":"~w"},~n',[A,Class,C,DStr]), fail.
+pr :- writeln("]").
 
 
 plan :-
