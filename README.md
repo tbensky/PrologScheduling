@@ -1318,6 +1318,12 @@ This outputs a near valid json representation of the room assignments, that look
 
 To use this, simply replace the `listing(room)` with `json`.
 
-This outputs a "near" json valid object, because in the final `,]` combination,  the `,` must be filterd out.  We do this is a procedural language (Javascript), used to render the rooms. (This would be an awful task to try to do in Prolog.)
+This outputs a "near" json valid object, because in the final 
+
+```}
+,
+]```
+
+combination,  the `,` must be filterd out.  We do this is a procedural language (Javascript), used to render the rooms. (This would be an awful task to try to do in Prolog.)
 
 Next, if you open `render.html` (in this repo) in a web browser, paste in this json output, the click the `render` button, you'll see the room occupancy.
