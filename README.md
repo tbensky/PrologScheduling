@@ -1099,7 +1099,9 @@ This may sound a bit circular, but `DaysTimes` is now chosen by rote data pullin
 
 # Room Visualizer
 
-The Prolog output is rather raw but processable.  We've written another predicate called `json` which will output the room assignments in a json-ish style output, which is 
+The Prolog output is raw but processable downstream by some other (likely) procedural code you may require. 
+
+To help, we've written another predicate called `json` which will output the room assignments in a json-ish style output, which is 
 
 ```prolog
 json :- write('['), room(A,B,[C|D]), class(B,Class,_), 
