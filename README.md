@@ -1103,11 +1103,11 @@ The Prolog output is raw but processable downstream by some other (likely) proce
 To help, we've written another predicate called `json` which will output the room assignments in a json-ish style output, which is 
 
 ```prolog
-json :-         write('['), 
-                room(A,B,[C|D]), 
-                class(B,Class,_), 
-                flatten(D,DStr), format('{"room_num":~w,"class_name":"~w","days":"~w","times":"~w"},~n',[A,Class,C,DStr]), 
-                fail.
+json :- write('['), 
+        room(A,B,[C|D]), 
+        class(B,Class,_), 
+        flatten(D,DStr), format('{"room_num":~w,"class_name":"~w","days":"~w","times":"~w"},~n',[A,Class,C,DStr]), 
+        fail.
 json :- writeln(']').
 ```
 
