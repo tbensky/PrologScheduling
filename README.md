@@ -1323,7 +1323,8 @@ This outputs a "near" json valid object, because in the final
 ```
 }
 ,
-]```
+]
+```
 
 combination,  the `,` must be filterd out.  We do this is a procedural language (Javascript), used to render the rooms. (This would be an awful task to try to do in Prolog.)
 
