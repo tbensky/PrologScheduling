@@ -9,7 +9,7 @@ we want to efficently schedule 200 classes into some (minimal) number of rooms.
 I've been dabbling with Prolog ever since high school, which was 30+ years ago. (Ouch! [Not alone though.](https://news.ycombinator.com/item?id=32690892)) Hacking Prolog is kind of a hobby for me, but in all
 of this time, I've always had a hard time getting it to do anything actually useful. Until now! 
 
-I'm happy to say, that after all of this time, I've finally written my first real Prolog program: Prolog code that places classes into rooms (which I use for scheduling work I do as part of my job).
+I'm happy to say, that after 30+ years of study, I've finally written my first real Prolog program!  It's code that places classes into rooms (which I use for scheduling work I do as part of my job).
 
 ## Perception of Prolog
 
