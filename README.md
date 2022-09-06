@@ -2,20 +2,18 @@
 
 This is a and step-by-step example of how to use
 Prolog and constraint logic programmig (CLP) in a classroom scheduling application. In particular, 
-we want to schedule a list of 200 classes  into some (minimal) number of rooms.
+we want to efficently schedule 200 classes into some (minimal) number of rooms.
 
 ## Funny realization
 
 I've been dabbling with Prolog ever since high school, which was 30+ years ago. (Ouch! [Not alone though.](https://news.ycombinator.com/item?id=32690892)) Hacking Prolog is kind of a hobby for me, but in all
 of this time, I've always had a hard time getting it to do anything actually useful. Until now! 
 
-I'm happy to say, that after all of this time, I've finally written my first real Prolog program!
-
-The program actually does something too: it helps me with scheduling work I do as part of my job. 
+I'm happy to say, that after all of this time, I've finally written my first real Prolog program: Prolog code that places classes into rooms (which I use for scheduling work I do as part of my job).
 
 ## Perception of Prolog
 
-Prolog has an erroneous reputation out there (which is also how I used
+Prolog has an troubled reputation out there (which is also how I used
 to think about it). It usually goes like this.
 
 Someone will post a question to Stackoverflow that will say
@@ -1323,13 +1321,15 @@ This outputs a near valid json representation of the room assignments, that look
 
 To use this, simply replace the `listing(room)` with `json`.
 
-This outputs a "near" json valid object, because in the final 
+This outputs a "near" json valid object, because in the final two lines, the  
 
 ```prolog
 },
 ]
 ```
 
-combination,  the `,` must be filterd out.  We do this is a procedural language (Javascript), used to render the rooms. (This would be an awful task to try to do in Prolog.)
+`,` must be filterd out.  We do this in a procedural language (Javascript), used to render the rooms. (This is an example of a difficult task to try and do in Prolog, but very easy in a procedural language. It looks like SWI-Prolog has a function called `re_replace` however.)
 
 Next, if you open `render.html` (in this repo) in a web browser, paste in this json output, the click the `render` button, you'll see the room occupancy.
+
+
