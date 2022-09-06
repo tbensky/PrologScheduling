@@ -281,9 +281,9 @@ no_overlap(Proposed,[PlacedHead|PlacedTail]) :- \+ pair_overlap(Proposed,PlacedH
 
 fits_in_room(RoomNum,ProposedDaysTimes) :- findall(X,room(RoomNum,_,X),PlacedSoFar), no_overlap(ProposedDaysTimes,PlacedSoFar). 
 
-pr :- write("["), room(A,B,[C|D]), class(B,Class,_), 
-        flatten(D,DStr), format('{"room_num":"~w","class_name":"~w","days":"~w","times":"~w"},~n',[A,Class,C,DStr]), fail.
-pr :- writeln("]").
+json :- write('['), room(A,B,[C|D]), class(B,Class,_), 
+        flatten(D,DStr), format('{"room_num":~w,"class_name":"~w","days":"~w","times":"~w"},~n',[A,Class,C,DStr]), fail.
+json :- writeln(']').
 
 
 plan :-
@@ -295,8 +295,8 @@ plan :-
         \+ room(_,ClassNum,_),
         assert(room(RoomNum,ClassNum,DaysTimes)),
         all_classes_placed,
-        %listing(room),
-        pr.  
+        listing(room),
+        json.  
 
 plan :- listing(room).
 
