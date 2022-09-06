@@ -11,6 +11,8 @@ of this time, I've always had a hard time getting it to do anything actually use
 
 I'm happy to say, that after 30+ years of study, I've finally written my first real Prolog program!  It's code that places classes into rooms (which I use for scheduling work I do as part of my job).
 
+The work here was motivated by this [timetabling](https://www.metalevel.at/simsttab/) example.
+
 ## Perception of Prolog
 
 Prolog has an troubled reputation out there (which is also how I used
