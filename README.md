@@ -1097,7 +1097,7 @@ Another parameter worth enumerating here may be the time of day chosen for a cla
 This may sound a bit circular, but `DaysTimes` is now chosen by rote data pulling via the line `time_slot(TimeSlotGroup,DaysTimes)`, which may be somewhat constraining to the search.  We note in particular when using the `must_place` constraint how the affected classes are placed very first, at even at the first possible time slot allowed for that class. This may not be optimal for overall room packing for the schedule as a whole, but may be if `DaysTimes` was enumerated, and constrained as suggested here.   We have not tried this yet.
 
 
-#Room Visualizer
+# Room Visualizer
 
 The Prolog output is rather raw but processable.  We've written another predicate called `json` which will output the room assignments in a json-ish style output, which is 
 
