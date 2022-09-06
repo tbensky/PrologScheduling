@@ -1112,7 +1112,7 @@ json :-         write('['),
 json :- writeln(']').
 ```
 
-Note, the `fail` here forces backtracking back up the logic until the `room(A,B,[C|D])` fails, meaning we've pulled all occupied rooms from the database. 
+Note, the `fail` here forces backtracking back up the logic until `room(A,B,[C|D])` fails, meaning we've pulled all occupied rooms from the database. 
 
 This outputs a near valid json representation of the room assignments, that looks like this
 
