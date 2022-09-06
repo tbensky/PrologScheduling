@@ -48,7 +48,7 @@ the actual Prolog code.
 I usually find coding up the data for a problem very enjoyable. I usually do this first, and it feels like I'm making fast progress in solving my problem.  "Prolog is so fun and flexible" I often think. The rule I need to satisfy however, which will drive the search, always feels much more difficult, and more progress is usually very very slow. Even haltingly so.
 
 I think with Prolog, people get hung up on stating the rule they wish to satisfy from their data. In other words, they (myself included) all get hung up on driving Prolog's search.  They 
-kind of expect Prolog to just "know" such things. 
+kind of expect Prolog to just "know" such things, but it doesn't.
 
 In scheduling for example, there is no built in magic of Prolog like `make_a_schedule(X),` 
 where you hit return and X will be a list of rooms and what
@@ -57,7 +57,8 @@ classes can be placed into each.
 You still have to code up the Prolog
 that ensures classes aren't placed on top of each other, some kind of
 termination condition, some data structure that models
-"rooms of classes," etc. If you want something that may understand scheduing already, look at something like [MiniZinc](https://www.minizinc.org).
+"rooms of classes," etc. The first two will guide the search. For example, Prolog should reject "solutions" that have two classes
+in the same room at the same time.  The data structure will collect satifactory results.  (If you want something that may understand scheduing already, look at something like [MiniZinc](https://www.minizinc.org).)  
 
 As [Triska](https://www.metalevel.at/prolog) pointed out, if you've wandered over to Prolog, it's probably because you know you
 have a difficult problem to solve, likely with a large phase-space to explore.  You're looking at Prolog because you are already stuck on what to do.  So, you start putting some of your data into Prolog code, but Prolog doesn't immediately make it obvious what to do with this data. Maybe you've already forgotton how difficult your problem is in the first place, and so the frustration *with Prolog* sets in.
