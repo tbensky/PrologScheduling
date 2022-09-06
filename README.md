@@ -1111,9 +1111,9 @@ json :-         write('['),
 json :- writeln(']').
 ```
 
-Note, the `fail` here forces backtracking back up the logic until `room(A,B,[C|D])` fails, meaning we've pulled all occupied rooms from the database. 
+Note, the `fail` here forces backtracking back up the logic chain until `room(A,B,[C|D])` fails, meaning we've pulled all occupied rooms from the database. 
 
-This outputs a near valid json representation of the room assignments, that looks like this
+This outputs a *near* valid json representation of the room assignments, that looks like this
 
 ```json
 [{"room_num":1,"class_name":"[astr-1101-1]","days":"[m,t,w,r]","times":"[7,10,8,0]"},
@@ -1329,7 +1329,7 @@ This outputs a "near" json valid object, because in the final two lines, the
 ]
 ```
 
-`,` must be filterd out.  We do this in a procedural language (Javascript), used to render the rooms. (This is an example of a difficult task to try and do in Prolog, but very easy in a procedural language. It looks like SWI-Prolog has a function called `re_replace` however.)
+`,` must be filterd out.  We do this in a procedural language (Javascript), used to render the rooms. We also can't seem to get rid of the brackets in the `class_name`, `days`, and `times` fields. (These are both examples of difficult task in Prolog, but trivial in a procedural language. It looks like SWI-Prolog has a function called `re_replace` however.)
 
 Next, if you open `render.html` (in this repo) in a web browser, paste in this json output, the click the `render` button, you'll see the room occupancy.
 
