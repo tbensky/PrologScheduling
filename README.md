@@ -1320,9 +1320,8 @@ To use this, simply replace the `listing(room)` with `json`.
 
 This outputs a "near" json valid object, because in the final 
 
-```
-}
-,
+```prolog
+},
 ]
 ```
 
