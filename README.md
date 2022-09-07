@@ -1331,7 +1331,7 @@ This outputs a "near" json valid object, because in the final two lines, the
 ]
 ```
 
-`,` must be filterd out.  We also can't seem to get rid of the brackets in the `class_name`, `days`, and `times` fields. (These are both examples of difficult tasks in Prolog, but trivial in a procedural language.  So we'll do both in the downstream procedural language (here Javascript), that graphically renders room packing results. It looks like SWI-Prolog has a function called `re_replace` however.)
+`,` must be filterd out (or JSON parsers will reject the whole thing).  We also can't seem to get rid of the brackets in the `class_name`, `days`, and `times` fields. (These are both examples of difficult tasks in Prolog, but trivial in a procedural language.  So we'll do both in the downstream procedural language (here Javascript), that graphically renders room packing results. It looks like SWI-Prolog has a function called `re_replace` however.)
 
 Next, if you open `render.html` (in this repo) in a web browser, paste in this json output, the click the `render` button, you'll see the room occupancy.
 
