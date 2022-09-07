@@ -1058,7 +1058,13 @@ This works as follows, focusing on the line
 
 Note the outer `(` and `)` are very important here.
 
- When trying to force Prolog to choose a value for `RoomNum`, we allow it to do so in one of two ways. First, we see if a constraint via the `must_place_in` predicate exists for a given `ClassNum`. If so, instantiate `RoomNum` to the required value. If `must_in_place` fails, as in, "class `ClassNum` has no fixed room requirement," then we defer to `indomain` to assign a value to `RoomNum`.  This is why we need the `must_place_in(_,_) :- fail.` definition, since we need `must_in_place` to explicitly fail to trigger `indomain`, if no explicit class room requirement is given. Running this indeed places the rooms as needed:
+ When trying to force Prolog to choose a value for `RoomNum`, we allow it to do so in one of two ways. First, we see if a constraint via the `must_place_in` predicate exists for a given `ClassNum`. If so, instantiate `RoomNum` to the required value. If `must_in_place` fails, as in, "class `ClassNum` has no fixed room requirement," then we defer to `indomain` to assign a value to `RoomNum`.  This is why we need the `must_place_in(_,_) :- fail.` definition, since we need `must_in_place` to explicitly not allow `indomain` to trigger in the line
+
+ ```prolog
+(must_place_in(ClassNum,RoomNum)  ; indomain(RoomNum)),
+ ```
+
+ if no explicit class room requirement is given. Running this indeed places the rooms as needed:
 
  ```prolog
 room(3, 1, [[m, t, w, r], [7, 10, 8, 0]]).
@@ -1085,6 +1091,8 @@ More scheduling constraints are possible. Some we haven't explored yet:
 
 * Avoiding some offering times for particular classes.
 
+* Being sure some class A is offered before of after class B on a given day.
+
 We're sure there are plenty of scheduling constraints out there.
 
 
@@ -1100,7 +1108,7 @@ This may sound a bit circular, but `DaysTimes` is now chosen by rote data pullin
 
 # Room Visualizer
 
-The Prolog output is raw but processable downstream by some other (likely) procedural code you may require. 
+The Prolog output is pretty raw, but reasonably processable downstream by some other (likely) procedural code you may require. 
 
 To help, we've written another predicate called `json` which will output the room assignments in a json-ish style output, which is 
 
@@ -1331,7 +1339,7 @@ This outputs a "near" json valid object, because in the final two lines, the
 ]
 ```
 
-`,` must be filterd out (or JSON parsers will reject the whole thing).  We also can't seem to get rid of the brackets in the `class_name`, `days`, and `times` fields. (These are both examples of difficult tasks in Prolog, but trivial in a procedural language.  So we'll do both in the downstream procedural language (here Javascript), that graphically renders room packing results. It looks like SWI-Prolog has a function called `re_replace` however.)
+`,` must be filterd out (or JSON parsers will reject the whole thing).  Also, in the Prolog output, we can't seem to get rid of the brackets in the `class_name`, `days`, and `times` fields. (These are both examples of difficult tasks in Prolog, but trivial in a procedural language.  So we'll do both in the downstream procedural language (here Javascript), that graphically renders room packing results. It looks like SWI-Prolog has a function called `re_replace` however.)
 
 Next, if you open `render.html` (in this repo) in a web browser, paste in this json output, the click the `render` button, you'll see the room occupancy.
 

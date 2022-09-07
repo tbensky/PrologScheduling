@@ -256,9 +256,15 @@ class(200,[psc-492-03],1).
 class(201,[psc-492-04],1).
 
 
+%class 1 must be placed in room 3.
 %must_place_in(1,3).
 %must_place_in(201,7).
 must_place_in(_,_) :- fail.
+
+
+%class 9 must always be scheduled earlier than class 1
+must_be_earlier(9,1).
+must_be_easlier(_,_).
 
 
 :- dynamic room/3.
@@ -295,8 +301,7 @@ plan :-
         \+ room(_,ClassNum,_),
         assert(room(RoomNum,ClassNum,DaysTimes)),
         all_classes_placed,
-        listing(room),
-        json.  
+        listing(room).  
 
 plan :- listing(room).
 
